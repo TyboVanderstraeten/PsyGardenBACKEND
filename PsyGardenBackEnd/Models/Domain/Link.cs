@@ -5,9 +5,20 @@ using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Models.Domain
 {
-    public class Link:Resource
+    public class Link : Resource
     {
         public string Name { get; set; }
         public string Url { get; set; }
+
+        protected Link()
+        {
+
+        }
+
+        public Link(string name, string url)
+        {
+            Name = name;
+            Url = url;
+        }
     }
 }

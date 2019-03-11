@@ -18,7 +18,22 @@ namespace PsyGardenBackEnd.Models.Domain
         public Genre Genre { get; set; }
 
         public ICollection<Price> Prices;
-        public ICollection<Resource> Resources; 
+        public ICollection<Resource> Resources;
         #endregion
+
+        protected Event()
+        {
+
+        }
+
+        public Event(string name, string description, DateTime startDate, DateTime endDate, Location location, Genre genre)
+        {
+            Name = name;
+            Description = description;
+            StartDate = startDate;
+            EndDate = EndDate;
+            Location = location;
+            Genre = genre;
+        }
     }
 }

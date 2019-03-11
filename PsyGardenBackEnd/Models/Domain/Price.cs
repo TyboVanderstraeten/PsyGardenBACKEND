@@ -9,5 +9,16 @@ namespace PsyGardenBackEnd.Models.Domain
     {
         public string Description { get; set; }
         public decimal Cost { get; set; }
+
+        protected Price()
+        {
+
+        }
+
+        public Price(string description,decimal cost)
+        {
+            Description = description;
+            Cost = cost;
+        }
     }
 }

@@ -10,8 +10,23 @@ namespace PsyGardenBackEnd.Models.Domain
         public Country Country { get; set; }
         public string Region { get; set; }
         public string City { get; set; }
-        public string  Street { get; set; }
+        public string Street { get; set; }
         public string StreetNr { get; set; }
         public string ZipCode { get; set; }
+
+        protected Location()
+        {
+
+        }
+
+        public Location(Country country, string region, string city, string street, string streetnr, string zipcode)
+        {
+            Country = Country;
+            Region = region;
+            City = city;
+            Street = street;
+            StreetNr = streetnr;
+            ZipCode = zipcode;
+        }
     }
 }
