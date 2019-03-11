@@ -9,16 +9,16 @@ namespace PsyGardenBackEnd.Models.Domain
     {
 
         #region Properties
+        public int EventId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int NrOfDays { get { return (EndDate - StartDate).Days; } }
         public Location Location { get; set; }
-        public Genre Genre { get; set; }
-
-        public ICollection<Price> Prices;
-        public ICollection<Resource> Resources;
+        public ICollection<Genre> Genres { get; set; }
+        public ICollection<Price> Prices { get; set; }
+        public ICollection<Resource> Resources { get; set; }
         #endregion
 
         protected Event()
@@ -26,14 +26,16 @@ namespace PsyGardenBackEnd.Models.Domain
 
         }
 
-        public Event(string name, string description, DateTime startDate, DateTime endDate, Location location, Genre genre)
+        public Event(string name, string description, DateTime startDate, DateTime endDate, Location location)
         {
             Name = name;
             Description = description;
             StartDate = startDate;
-            EndDate = EndDate;
+            EndDate = endDate;
             Location = location;
-            Genre = genre;
+            Genres = new List<Genre>();
+            Prices = new List<Price>();
+            Resources = new List<Resource>();
         }
     }
 }

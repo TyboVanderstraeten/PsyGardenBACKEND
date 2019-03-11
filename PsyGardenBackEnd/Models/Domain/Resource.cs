@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Models.Domain
 {
-    public class Resource
+    public abstract class Resource
     {
-        public int ResourcId { get; set; }
+        public int ResourceId { get; set; }
 
         protected Resource()
         {

@@ -9,3 +9,6 @@ D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcor
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.AssemblyInfoInputs.cache
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.AssemblyInfo.cs
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorTargetAssemblyInfo.cache
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.dll
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb

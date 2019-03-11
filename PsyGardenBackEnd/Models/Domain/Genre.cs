@@ -8,7 +8,7 @@ namespace PsyGardenBackEnd.Models.Domain
     public enum Genre
     {
         GoaTrance,
-        Psytrance,
+        PsyTrance,
         UptempoPsy,
         ProgressivePsytrance,
         FullOnTrance,
@@ -18,8 +18,8 @@ namespace PsyGardenBackEnd.Models.Domain
         Zenonesque,
         ForestPsy,
         HiTech,
-        Psybreaks,
-        Psybient,
+        PsyBreaks,
+        PsyBient,
         PsyTech
     }
 }

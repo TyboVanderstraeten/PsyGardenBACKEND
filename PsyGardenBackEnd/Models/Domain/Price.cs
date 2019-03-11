@@ -7,6 +7,7 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Price
     {
+        public int PriceId { get; set; }
         public string Description { get; set; }
         public decimal Cost { get; set; }
 

@@ -7,6 +7,7 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Location
     {
+        public int LocationId { get; set; }
         public Country Country { get; set; }
         public string Region { get; set; }
         public string City { get; set; }
