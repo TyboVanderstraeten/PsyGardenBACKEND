@@ -1,7 +1,7 @@
 # PsyGarden
 PsyGarden is a webapplication which shows psytrance events in Europe.
 
-##Author
+## Author
 Tybo Vanderstraeten
 
 ## PsyGarden-BackEnd
