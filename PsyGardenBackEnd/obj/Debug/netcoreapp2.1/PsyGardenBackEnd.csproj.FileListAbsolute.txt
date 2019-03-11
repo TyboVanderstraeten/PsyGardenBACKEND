@@ -1,0 +1,11 @@
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.deps.json
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.runtimeconfig.json
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.runtimeconfig.dev.json
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.dll
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.csprojAssemblyReference.cache
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.csproj.CoreCompileInputs.cache
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorAssemblyInfo.cache
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorAssemblyInfo.cs
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.AssemblyInfoInputs.cache
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.AssemblyInfo.cs
+D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorTargetAssemblyInfo.cache
