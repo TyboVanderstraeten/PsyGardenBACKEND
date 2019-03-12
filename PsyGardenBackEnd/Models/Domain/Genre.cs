@@ -5,21 +5,19 @@ using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Models.Domain
 {
-    public enum Genre
+    public class Genre
     {
-        GoaTrance,
-        PsyTrance,
-        UptempoPsy,
-        ProgressivePsytrance,
-        FullOnTrance,
-        NightFullOnTrance,
-        TwilightPsytrance,
-        DarkPsy,
-        Zenonesque,
-        ForestPsy,
-        HiTech,
-        PsyBreaks,
-        PsyBient,
-        PsyTech
+        public int GenreId { get; set; }
+        public string Name { get; set; }
+
+        protected Genre()
+        {
+
+        }
+
+        public Genre(string name)
+        {
+            Name = name;
+        }
     }
 }

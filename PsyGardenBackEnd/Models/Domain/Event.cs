@@ -16,7 +16,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public DateTime EndDate { get; set; }
         public int NrOfDays { get { return (EndDate - StartDate).Days; } }
         public Location Location { get; set; }
-        public ICollection<Genre> Genres { get; set; }
+        public ICollection<EventGenre> Genres { get; set; }
         public ICollection<Price> Prices { get; set; }
         public ICollection<Resource> Resources { get; set; }
         #endregion
@@ -34,7 +34,7 @@ namespace PsyGardenBackEnd.Models.Domain
             StartDate = startDate;
             EndDate = endDate;
             Location = location;
-            Genres = new List<Genre>();
+            Genres = new List<EventGenre>();
             Prices = new List<Price>();
             Resources = new List<Resource>();
         }
@@ -43,12 +43,14 @@ namespace PsyGardenBackEnd.Models.Domain
         #region Methods
         public void AddGenre(Genre genre)
         {
-            Genres.Add(genre);
+            EventGenre eventGenre = new EventGenre(this, genre);
+            Genres.Add(eventGenre);
         }
 
         public void RemoveGenre(Genre genre)
         {
-            Genres.Remove(genre);
+            EventGenre eventGenre = new EventGenre(this, genre);
+            Genres.Remove(eventGenre);
         }
 
         public void AddPrice(Price price)

@@ -20,9 +20,11 @@ namespace PsyGardenBackEnd.Data
             modelBuilder.ApplyConfiguration(new ResourceConfiguration());
             modelBuilder.ApplyConfiguration(new LinkConfiguration());
             modelBuilder.ApplyConfiguration(new ImageConfiguration());
+            modelBuilder.ApplyConfiguration(new GenreConfiguration());
+            modelBuilder.ApplyConfiguration(new EventGenreConfiguration());
         }
 
         public DbSet<Event> Events { get; set; }
-        public DbSet<Location> Locations { get; set; }
+        public DbSet<Genre> Genres { get; set; }
     }
 }

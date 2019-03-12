@@ -12,7 +12,6 @@ namespace PsyGardenBackEnd.Data.Repositories
         #region Properties
         private PsyGardenDBContext _dbContext;
         private DbSet<Event> _events;
-        //private DbSet<Location> _locations;
         #endregion
 
         #region Constructors
@@ -20,7 +19,6 @@ namespace PsyGardenBackEnd.Data.Repositories
         {
             _dbContext = dbContext;
             _events = dbContext.Events;
-            //_locations = dbContext.Locations;
         }
         #endregion
 
@@ -43,7 +41,6 @@ namespace PsyGardenBackEnd.Data.Repositories
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
                 .Include(e => e.Location)
-                .ThenInclude(l => l.Country)
                 .SingleOrDefault(e => e.EventId == eventId);
         }
 

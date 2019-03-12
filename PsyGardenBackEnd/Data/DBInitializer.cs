@@ -10,17 +10,33 @@ namespace PsyGardenBackEnd.Data
     {
         private PsyGardenDBContext _dbContext;
         private IEventRepository _eventRepository;
+        private IGenreRepository _genreRepository;
 
-        public DBInitializer(PsyGardenDBContext dbContext, IEventRepository eventRepository)
+        public DBInitializer(PsyGardenDBContext dbContext, IEventRepository eventRepository,
+            IGenreRepository genreRepository)
         {
             _dbContext = dbContext;
             _eventRepository = eventRepository;
+            _genreRepository = genreRepository;
         }
 
         public void InitializeData()
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated()) {
+                //Some genres
+                Genre goaTrance = new Genre("GoaTrance");
+                Genre psyTrance = new Genre("PsyTrance");
+                Genre uptempoPsy = new Genre("FullOnTrance");
+                Genre hitech = new Genre("Hitech");
+
+                //Adding genres to DB
+                _genreRepository.Add(goaTrance);
+                _genreRepository.Add(psyTrance);
+                _genreRepository.Add(uptempoPsy);
+                _genreRepository.Add(hitech);
+                _genreRepository.SaveChanges();
+
                 //Some prices
                 Price standardPrice = new Price("The standard price", 20.0M);
                 Price earlyBirdPrice = new Price("The early bird price", 14.5M);
@@ -37,9 +53,8 @@ namespace PsyGardenBackEnd.Data
                 //Event
                 Event psyfest = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
                     new DateTime(2019, 8, 24), location);
-                psyfest.AddGenre(Genre.DarkPsy);
-                psyfest.AddGenre(Genre.HiTech);
-                psyfest.AddGenre(Genre.PsyTrance);
+                psyfest.AddGenre(psyTrance);
+                psyfest.AddGenre(hitech);
                 psyfest.AddPrice(standardPrice);
                 psyfest.AddPrice(earlyBirdPrice);
                 psyfest.AddPrice(VIPPrice);
@@ -49,8 +64,6 @@ namespace PsyGardenBackEnd.Data
                 //Adding to repo + saving context to DB
                 _eventRepository.Add(psyfest);
                 _eventRepository.SaveChanges();
-                Console.WriteLine(_eventRepository.GetById(1).Location.Country);
-                Console.ReadLine();
             }
         }
     }
