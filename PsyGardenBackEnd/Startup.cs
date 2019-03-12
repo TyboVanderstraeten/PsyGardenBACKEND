@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PsyGardenBackEnd.Data;
+using PsyGardenBackEnd.Data.Repositories;
+using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd
 {
@@ -34,10 +36,11 @@ namespace PsyGardenBackEnd
             });
 
             services.AddScoped<DBInitializer>();
+            services.AddScoped<IEventRepository, EventRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,DBInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DBInitializer dbInitializer)
         {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();

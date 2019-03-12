@@ -21,6 +21,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public ICollection<Resource> Resources { get; set; }
         #endregion
 
+        #region Constructors
         protected Event()
         {
 
@@ -37,5 +38,38 @@ namespace PsyGardenBackEnd.Models.Domain
             Prices = new List<Price>();
             Resources = new List<Resource>();
         }
+        #endregion
+
+        #region Methods
+        public void AddGenre(Genre genre)
+        {
+            Genres.Add(genre);
+        }
+
+        public void RemoveGenre(Genre genre)
+        {
+            Genres.Remove(genre);
+        }
+
+        public void AddPrice(Price price)
+        {
+            Prices.Add(price);
+        }
+
+        public void RemovePrice(Price price)
+        {
+            Prices.Remove(price);
+        }
+
+        public void AddResource(Resource resource)
+        {
+            Resources.Add(resource);
+        }
+
+        public void RemoveResource(Resource resource)
+        {
+            Resources.Remove(resource);
+        }
+        #endregion
     }
 }
