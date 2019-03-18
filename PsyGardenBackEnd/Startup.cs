@@ -61,7 +61,7 @@ namespace PsyGardenBackEnd
             app.UseSwaggerUi3();
             app.UseSwagger();
 
-            // dbInitializer.InitializeData();
+            dbInitializer.InitializeData();
 
         }
     }
