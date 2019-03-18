@@ -10,7 +10,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public int GenreId { get; set; }
         public string Name { get; set; }
 
-        protected Genre()
+        public Genre()
         {
 
         }

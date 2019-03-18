@@ -12,7 +12,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public Event Event { get; set; }
         public Genre Genre { get; set; }
 
-        protected EventGenre()
+        public EventGenre()
         {
 
         }

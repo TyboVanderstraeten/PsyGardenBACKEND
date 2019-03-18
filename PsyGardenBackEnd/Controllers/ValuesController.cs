@@ -30,7 +30,12 @@ namespace PsyGardenBackEnd.Controllers
         public ActionResult<Event> Get(int id)
         {
             Event e = _eventRepository.GetById(id);
-            return e;
+            if (e == null) {
+                return NotFound();
+            }
+            else {
+                return e;
+            }
         }
 
         // POST api/values

@@ -9,7 +9,7 @@ namespace PsyGardenBackEnd.Models.Domain
     {
         public int ResourceId { get; set; }
 
-        protected Resource()
+        public Resource()
         {
 
         }

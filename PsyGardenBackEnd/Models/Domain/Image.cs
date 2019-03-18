@@ -7,7 +7,7 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Image:Resource
     {
-        protected Image()
+        public Image()
         {
 
         }

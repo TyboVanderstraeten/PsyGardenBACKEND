@@ -22,7 +22,7 @@ namespace PsyGardenBackEnd.Models.Domain
         #endregion
 
         #region Constructors
-        protected Event()
+        public Event()
         {
 
         }

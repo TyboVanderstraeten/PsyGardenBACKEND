@@ -56,11 +56,12 @@ namespace PsyGardenBackEnd
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            dbInitializer.InitializeData();
 
             //Use NSwag service
             app.UseSwaggerUi3();
             app.UseSwagger();
+
+            // dbInitializer.InitializeData();
 
         }
     }

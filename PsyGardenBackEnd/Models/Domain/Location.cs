@@ -15,7 +15,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public string StreetNr { get; set; }
         public string ZipCode { get; set; }
 
-        protected Location()
+        public Location()
         {
 
         }

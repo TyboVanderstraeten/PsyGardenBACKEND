@@ -10,7 +10,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public string Name { get; set; }
         public string Url { get; set; }
 
-        protected Link()
+        public Link()
         {
 
         }
