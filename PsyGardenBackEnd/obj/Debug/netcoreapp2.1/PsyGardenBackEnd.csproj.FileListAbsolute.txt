@@ -12,3 +12,17 @@ D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcor
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.dll
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.deps.json
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.runtimeconfig.json
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.runtimeconfig.dev.json
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.dll
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.csprojAssemblyReference.cache
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.csproj.CoreCompileInputs.cache
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorAssemblyInfo.cache
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorAssemblyInfo.cs
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.AssemblyInfoInputs.cache
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.AssemblyInfo.cs
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorTargetAssemblyInfo.cache
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.dll
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb

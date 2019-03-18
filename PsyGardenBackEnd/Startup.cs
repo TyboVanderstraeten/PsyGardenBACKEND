@@ -31,12 +31,12 @@ namespace PsyGardenBackEnd
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<PsyGardenDBContext>(options => {
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
-            });
-
             //Add NSwag service
             services.AddOpenApiDocument();
+
+            services.AddDbContext<PsyGardenDBContext>(options => {
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
+            });
 
             services.AddScoped<DBInitializer>();
             services.AddScoped<IEventRepository, EventRepository>();

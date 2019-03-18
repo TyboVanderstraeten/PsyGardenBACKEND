@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Models.Domain
 {
-    public abstract class Resource
+    public class Resource
     {
         public int ResourceId { get; set; }
 

@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PsyGardenBackEnd.Models.Domain;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Data.Repositories
 {
@@ -26,7 +24,7 @@ namespace PsyGardenBackEnd.Data.Repositories
         public IEnumerable<Event> GetAll()
         {
             return _events
-                .Include(e => e.Genres)
+                //.Include(e => e.Genres)
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
                 .Include(e => e.Location)
@@ -36,11 +34,11 @@ namespace PsyGardenBackEnd.Data.Repositories
         public Event GetById(int eventId)
         {
             return _events
-                .Include(e => e.Genres)
+                //.Include(e => e.Genres)
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
                 .Include(e => e.Location)
-                .SingleOrDefault(e => e.EventId == eventId); 
+                .SingleOrDefault(e => e.EventId == eventId);
         }
 
         public void Add(Event @event)

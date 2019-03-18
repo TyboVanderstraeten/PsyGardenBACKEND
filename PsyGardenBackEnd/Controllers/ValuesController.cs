@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PsyGardenBackEnd.Data;
 using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd.Controllers
@@ -29,19 +31,31 @@ namespace PsyGardenBackEnd.Controllers
         [HttpGet("{id}")]
         public ActionResult<Event> Get(int id)
         {
-            Event e = _eventRepository.GetById(id);
-            if (e == null) {
+            Event @event = _eventRepository.GetById(id);
+            if (@event == null) {
                 return NotFound();
             }
             else {
-                return e;
+                return @event;
             }
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Event @event)
         {
+            Event temp = new Event();
+            temp.EventId = @event.EventId;
+            temp.Name = @event.Name;
+            temp.Description = @event.Description;
+            temp.StartDate = @event.StartDate;
+            temp.EndDate = @event.EndDate;
+            temp.Location = @event.Location;
+            //temp.Genres = @event.Genres;
+            temp.Prices = @event.Prices;
+            temp.Resources = @event.Resources;
+            _eventRepository.Add(temp);
+            _eventRepository.SaveChanges();
         }
 
         // PUT api/values/5
