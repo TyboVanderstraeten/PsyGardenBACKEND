@@ -35,6 +35,9 @@ namespace PsyGardenBackEnd
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             });
 
+            //Add NSwag service
+            services.AddOpenApiDocument();
+
             services.AddScoped<DBInitializer>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
@@ -54,6 +57,11 @@ namespace PsyGardenBackEnd
             app.UseMvc();
 
             dbInitializer.InitializeData();
+
+            //Use NSwag service
+            app.UseSwaggerUi3();
+            app.UseSwagger();
+
         }
     }
 }

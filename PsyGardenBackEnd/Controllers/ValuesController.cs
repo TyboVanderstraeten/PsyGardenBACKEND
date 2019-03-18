@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd.Controllers
 {
@@ -10,18 +11,26 @@ namespace PsyGardenBackEnd.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IEventRepository _eventRepository;
+
+        public ValuesController(IEventRepository eventRepository)
+        {
+            _eventRepository = eventRepository;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Event>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _eventRepository.GetAll().ToArray();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Event> Get(int id)
         {
-            return "value";
+            Event e = _eventRepository.GetById(id);
+            return e;
         }
 
         // POST api/values

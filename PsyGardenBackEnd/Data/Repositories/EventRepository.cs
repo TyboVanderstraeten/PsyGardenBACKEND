@@ -30,7 +30,6 @@ namespace PsyGardenBackEnd.Data.Repositories
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
                 .Include(e => e.Location)
-                .ThenInclude(l => l.Country)
                 .ToList();
         }
 
@@ -41,7 +40,7 @@ namespace PsyGardenBackEnd.Data.Repositories
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
                 .Include(e => e.Location)
-                .SingleOrDefault(e => e.EventId == eventId);
+                .SingleOrDefault(e => e.EventId == eventId); 
         }
 
         public void Add(Event @event)
