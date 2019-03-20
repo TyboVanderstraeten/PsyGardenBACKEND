@@ -56,6 +56,7 @@ namespace PsyGardenBackEnd.Data.Repositories
         public void Delete(Event @event)
         {
             _events.Remove(@event);
+            _dbContext.Locations.Remove(@event.Location);
         }
 
         public void SaveChanges()

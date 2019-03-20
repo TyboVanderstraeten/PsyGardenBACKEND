@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PsyGardenBackEnd.Models.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Data.Mapping
 {
@@ -14,7 +10,7 @@ namespace PsyGardenBackEnd.Data.Mapping
         {
             builder.ToTable("Location");
             builder.HasKey(l => l.LocationId);
-            builder.Property(l => l.Country).IsRequired();
+            builder.Property(l => l.Country).IsRequired().HasConversion<int>();
             builder.Property(l => l.Region).IsRequired();
             builder.Property(l => l.City).IsRequired();
             builder.Property(l => l.Street).IsRequired();

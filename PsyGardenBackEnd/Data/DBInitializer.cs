@@ -42,14 +42,10 @@ namespace PsyGardenBackEnd.Data
                 Resource websiteLink = new Link("Website", "www.psyfest.com");
                 Resource ticketLink = new Link("Tickets", "www.psyfest.tickets.com");
 
-                //Location
-                Location location = new Location(Country.Portugal, "Idanha-a-Nova",
-                   "Herdade do Torrão", "Lasientas", "440", "14500");
-                _dbContext.Locations.Add(location);
-
                 //Event
                 Event psyfest = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
-                    new DateTime(2019, 8, 24), location);
+                    new DateTime(2019, 8, 24), new Location(Country.Portugal, "Idanha-a-Nova",
+                   "Herdade do Torrão", "Lasientas", "440", "14500"));
                 psyfest.AddGenre(psyTrance);
                 psyfest.AddGenre(hitech);
                 psyfest.AddPrice(standardPrice);
