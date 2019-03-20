@@ -17,7 +17,13 @@ namespace PsyGardenBackEnd.Data.Mapping
             builder.Property(e => e.Description).IsRequired();
             builder.Property(e => e.StartDate).IsRequired();
             builder.Property(e => e.EndDate).IsRequired();
-            builder.HasOne(e => e.Location).WithMany().IsRequired().OnDelete(DeleteBehavior.Cascade); 
+            builder.Property(e => e.Country).IsRequired();
+            builder.Property(e => e.Region).IsRequired();
+            builder.Property(e => e.City).IsRequired();
+            builder.Property(e => e.Street).IsRequired();
+            builder.Property(e => e.StreetNr).IsRequired();
+            builder.Property(e => e.ZipCode).IsRequired();
+            builder.Property(e => e.EndDate).IsRequired();
             builder.HasMany(e => e.Prices).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(e => e.Resources).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
         }

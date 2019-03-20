@@ -7,18 +7,14 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Link : Resource
     {
-        public string Name { get; set; }
-        public string Url { get; set; }
 
         public Link()
         {
 
         }
 
-        public Link(string name, string url)
+        public Link(string name, string url) : base(name, url)
         {
-            Name = name;
-            Url = url;
         }
     }
 }

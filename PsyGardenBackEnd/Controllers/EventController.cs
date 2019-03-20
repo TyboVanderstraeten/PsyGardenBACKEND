@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PsyGardenBackEnd.Models.Domain;
 
@@ -16,12 +19,22 @@ namespace PsyGardenBackEnd.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Event> Get()
+        [ProducesResponseType(typeof(IEnumerable<Event>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<Event>> Get()
         {
-            return _eventRepository.GetAll();
+            IEnumerable<Event> events = _eventRepository.GetAll().OrderBy(e => e.Name).ToList();
+            if (events == null) {
+                return NotFound();
+            }
+            else {
+                return Ok(events);
+            }
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Event), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Event> Get(int id)
         {
             Event @event = _eventRepository.GetById(id);
@@ -29,38 +42,48 @@ namespace PsyGardenBackEnd.Controllers
                 return NotFound();
             }
             else {
-                return @event;
+                return Ok(@event);
             }
         }
 
         [HttpPost]
-        public void Post(Event @event)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Event> Post(Event @event)
         {
-            Event temp = new Event();
-            temp.EventId = @event.EventId;
-            temp.Name = @event.Name;
-            temp.Description = @event.Description;
-            temp.StartDate = @event.StartDate;
-            temp.EndDate = @event.EndDate;
-            temp.Location = @event.Location;
-            //temp.Genres = @event.Genres;
-            temp.Prices = @event.Prices;
-            temp.Resources = @event.Resources;
-            _eventRepository.Add(temp);
-            _eventRepository.SaveChanges();
+            try {
+                _eventRepository.Add(@event);
+                _eventRepository.SaveChanges();
+                return CreatedAtAction(nameof(Get), new { id = @event.EventId }, @event);
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult Put(int id, Event @event)
         {
+            if (id != @event.EventId) {
+                return BadRequest();
+            }
+            else {
+                _eventRepository.Update(@event);
+                _eventRepository.SaveChanges();
+                return Ok();
+            }
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult Delete(int id)
         {
             Event @event = _eventRepository.GetById(id);
             if (@event == null) {
-                return NotFound();
+                return NoContent();
             }
             else {
                 _eventRepository.Delete(@event);

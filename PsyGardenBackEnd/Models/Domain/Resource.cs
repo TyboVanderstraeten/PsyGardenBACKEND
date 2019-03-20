@@ -8,10 +8,18 @@ namespace PsyGardenBackEnd.Models.Domain
     public class Resource
     {
         public int ResourceId { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
 
         public Resource()
         {
 
+        }
+
+        public Resource(string name,string url)
+        {
+            Name = name;
+            Url = url;
         }
     }
 }

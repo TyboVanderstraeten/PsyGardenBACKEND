@@ -14,8 +14,13 @@ namespace PsyGardenBackEnd.Models.Domain
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int NrOfDays { get { return (EndDate - StartDate).Days+1; } }
-        public Location Location { get; set; }
+        public int NrOfDays { get { return (EndDate - StartDate).Days + 1; } }
+        public Country Country { get; set; }
+        public string Region { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string StreetNr { get; set; }
+        public string ZipCode { get; set; }
         public ICollection<EventGenre> Genres { get; set; }
         public ICollection<Price> Prices { get; set; }
         public ICollection<Resource> Resources { get; set; }
@@ -29,13 +34,20 @@ namespace PsyGardenBackEnd.Models.Domain
             Resources = new List<Resource>();
         }
 
-        public Event(string name, string description, DateTime startDate, DateTime endDate, Location location)
+        public Event(string name, string description, DateTime startDate, DateTime endDate,
+            Country country, string region, string city, string street, string streetnr,
+            string zipcode)
         {
             Name = name;
             Description = description;
             StartDate = startDate;
             EndDate = endDate;
-            Location = location;
+            Country = Country;
+            Region = region;
+            City = city;
+            Street = street;
+            StreetNr = streetnr;
+            ZipCode = zipcode;
             Genres = new List<EventGenre>();
             Prices = new List<Price>();
             Resources = new List<Resource>();

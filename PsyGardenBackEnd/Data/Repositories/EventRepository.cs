@@ -24,22 +24,20 @@ namespace PsyGardenBackEnd.Data.Repositories
         public IEnumerable<Event> GetAll()
         {
             return _events
-                .Include(e => e.Genres)
-                .ThenInclude(eg => eg.Genre)
+                //.Include(e => e.Genres)
+                //.ThenInclude(eg => eg.Genre)
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
-                .Include(e => e.Location)
                 .ToList();
         }
 
         public Event GetById(int eventId)
         {
             return _events
-                .Include(e => e.Genres)
-                .ThenInclude(eg => eg.Genre)
+                // .Include(e => e.Genres)
+                //  .ThenInclude(eg => eg.Genre)
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
-                .Include(e => e.Location)
                 .SingleOrDefault(e => e.EventId == eventId);
         }
 
@@ -56,7 +54,6 @@ namespace PsyGardenBackEnd.Data.Repositories
         public void Delete(Event @event)
         {
             _events.Remove(@event);
-            _dbContext.Locations.Remove(@event.Location);
         }
 
         public void SaveChanges()

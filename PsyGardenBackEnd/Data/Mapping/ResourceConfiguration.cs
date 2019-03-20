@@ -15,6 +15,8 @@ namespace PsyGardenBackEnd.Data.Mapping
 
             builder.ToTable("Resource");
             builder.HasKey(r => r.ResourceId);
+            builder.Property(r => r.Name).IsRequired();
+            builder.Property(r => r.Url).IsRequired();
             builder.HasDiscriminator<string>("Type")
                 .HasValue<Link>("Link")
                 .HasValue<Image>("Image");

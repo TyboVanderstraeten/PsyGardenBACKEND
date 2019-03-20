@@ -12,8 +12,7 @@ namespace PsyGardenBackEnd.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Link> builder)
         {
-            builder.Property(l => l.Name).IsRequired();
-            builder.Property(l => l.Url).IsRequired();
+           
         }
     }
 }
