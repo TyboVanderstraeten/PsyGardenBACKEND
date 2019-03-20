@@ -31,6 +31,7 @@ namespace PsyGardenBackEnd.Data
                 _dbContext.Genres.Add(psyTrance);
                 _dbContext.Genres.Add(uptempoPsy);
                 _dbContext.Genres.Add(hitech);
+                _dbContext.SaveChanges();
 
                 //Some prices
                 Price standardPrice = new Price("The standard price", 20.0M);

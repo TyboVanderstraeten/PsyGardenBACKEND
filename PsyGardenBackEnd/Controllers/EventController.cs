@@ -1,34 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PsyGardenBackEnd.Data;
 using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("PsyGardenAPI/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class EventController : ControllerBase
     {
         private IEventRepository _eventRepository;
 
-        public ValuesController(IEventRepository eventRepository)
+        public EventController(IEventRepository eventRepository)
         {
             _eventRepository = eventRepository;
         }
 
-        // GET api/values
         [HttpGet]
         public IEnumerable<Event> Get()
         {
-            IEnumerable<Event> events = _eventRepository.GetAll();
-            return events;
+            return _eventRepository.GetAll();
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<Event> Get(int id)
         {
@@ -41,7 +33,6 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
-        // POST api/values
         [HttpPost]
         public void Post(Event @event)
         {
@@ -59,16 +50,23 @@ namespace PsyGardenBackEnd.Controllers
             _eventRepository.SaveChanges();
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            Event @event = _eventRepository.GetById(id);
+            if (@event == null) {
+                return NotFound();
+            }
+            else {
+                _eventRepository.Delete(@event);
+                _eventRepository.SaveChanges();
+                return Ok();
+            }
         }
     }
 }
