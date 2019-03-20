@@ -9,6 +9,7 @@ namespace PsyGardenBackEnd.Data.Mapping
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Genre> builder)
         {
             builder.ToTable("Genre");
+            builder.HasKey(g => g.GenreId);
             builder.Property(g => g.Name).IsRequired();
         }
     }

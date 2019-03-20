@@ -22,9 +22,10 @@ namespace PsyGardenBackEnd.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Event>> Get()
+        public IEnumerable<Event> Get()
         {
-            return _eventRepository.GetAll().ToArray();
+            IEnumerable<Event> events = _eventRepository.GetAll();
+            return events;
         }
 
         // GET api/values/5

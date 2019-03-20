@@ -12,7 +12,7 @@ namespace PsyGardenBackEnd.Models.Domain
 
         public Genre()
         {
-
+            
         }
 
         public Genre(string name)
