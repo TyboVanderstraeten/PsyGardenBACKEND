@@ -8,6 +8,7 @@ namespace PsyGardenBackEnd.Models.Domain
     public class Link : Resource
     {
 
+        #region Constructors
         public Link()
         {
 
@@ -15,6 +16,7 @@ namespace PsyGardenBackEnd.Models.Domain
 
         public Link(string name, string url) : base(name, url)
         {
-        }
+        } 
+        #endregion
     }
 }

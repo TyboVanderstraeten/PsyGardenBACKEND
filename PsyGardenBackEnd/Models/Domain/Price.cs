@@ -7,11 +7,14 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Price
     {
+        #region Properties
         public int PriceId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Cost { get; set; }
+        #endregion
 
+        #region Constructors
         public Price()
         {
 
@@ -22,6 +25,7 @@ namespace PsyGardenBackEnd.Models.Domain
             Name = name;
             Description = description;
             Cost = cost;
-        }
+        } 
+        #endregion
     }
 }

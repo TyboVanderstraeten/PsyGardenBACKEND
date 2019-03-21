@@ -7,8 +7,11 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Image : Resource
     {
+        #region Properties
         public string Alt { get; set; }
+        #endregion
 
+        #region Constructors
         public Image()
         {
 
@@ -18,6 +21,7 @@ namespace PsyGardenBackEnd.Models.Domain
         {
 
             Alt = alt;
-        }
+        } 
+        #endregion
     }
 }

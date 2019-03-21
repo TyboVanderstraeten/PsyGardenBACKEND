@@ -42,7 +42,7 @@ namespace PsyGardenBackEnd.Models.Domain
             Description = description;
             StartDate = startDate;
             EndDate = endDate;
-            Country = Country;
+            Country = country;
             Region = region;
             City = city;
             Street = street;
