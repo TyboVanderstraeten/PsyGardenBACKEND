@@ -24,8 +24,8 @@ namespace PsyGardenBackEnd.Data.Repositories
         public IEnumerable<Event> GetAll()
         {
             return _events
-                //.Include(e => e.Genres)
-                //.ThenInclude(eg => eg.Genre)
+                .Include(e => e.Genres)
+                .ThenInclude(eg => eg.Genre)
                 .Include(e => e.Prices)
                 .Include(e => e.Resources)
                 .ToList();
