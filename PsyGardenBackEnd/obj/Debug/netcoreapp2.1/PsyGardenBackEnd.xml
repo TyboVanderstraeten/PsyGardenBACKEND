@@ -4,6 +4,47 @@
         <name>PsyGardenBackEnd</name>
     </assembly>
     <members>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.GetEvents">
+            <summary>
+            Get all events
+            </summary>
+            <returns>All events</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.GetEvent(System.Int32)">
+            <summary>
+            Get the event with given id
+            </summary>
+            <param name="id">The id of the event</param>
+            <returns>The event</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PostEvent(PsyGardenBackEnd.DTO.EventDTO)">
+            <summary>
+            Create the event
+            </summary>
+            <param name="event">The event to be created</param>
+            <returns>The event</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PutEvent(System.Int32,PsyGardenBackEnd.DTO.EventDTO)">
+            <summary>
+            Edit the event with given id
+            </summary>
+            <param name="id">The id of the event</param>
+            <param name="event">The event to be edited</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PatchEvent(System.Int32,PsyGardenBackEnd.DTO.EventDTO)">
+            <summary>
+            Partially edit the event with given id
+            </summary>
+            <param name="id">The id of the event</param>
+            <param name="event">The event to be partially edited</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.DeleteEvent(System.Int32)">
+            <summary>
+            Delete the event with given id
+            </summary>
+            <param name="id">The id of the event</param>
+            <returns>The event</returns>
+        </member>
         <member name="M:PsyGardenBackEnd.Controllers.GenresController.GetGenres">
             <summary>
             Get all genres
@@ -28,14 +69,14 @@
             <summary>
             Edit the genre with given id
             </summary>
-            <param name="id">The id of the genre to be edited</param>
+            <param name="id">The id of the genre</param>
             <param name="genre">The genre to be edited</param>
         </member>
         <member name="M:PsyGardenBackEnd.Controllers.GenresController.DeleteGenre(System.Int32)">
             <summary>
             Delete the genre with given id
             </summary>
-            <param name="id">The id of the genre to be deleted</param>
+            <param name="id">The id of the genre</param>
             <returns>The genre</returns>
         </member>
     </members>

@@ -21,7 +21,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public string Street { get; set; }
         public string StreetNr { get; set; }
         public string ZipCode { get; set; }
-        public ICollection<EventGenre> Genres { get; set; }
+        public ICollection<EventGenre> EventGenres { get; set; }
         public ICollection<Price> Prices { get; set; }
         public ICollection<Resource> Resources { get; set; }
         #endregion
@@ -29,7 +29,7 @@ namespace PsyGardenBackEnd.Models.Domain
         #region Constructors
         public Event()
         {
-            Genres = new List<EventGenre>();
+            EventGenres = new List<EventGenre>();
             Prices = new List<Price>();
             Resources = new List<Resource>();
         }
@@ -48,23 +48,23 @@ namespace PsyGardenBackEnd.Models.Domain
             Street = street;
             StreetNr = streetnr;
             ZipCode = zipcode;
-            Genres = new List<EventGenre>();
+            EventGenres = new List<EventGenre>();
             Prices = new List<Price>();
             Resources = new List<Resource>();
         }
         #endregion
 
         #region Methods
-        public void AddGenre(Genre genre)
+        public void AddEventGenre(Genre genre)
         {
             EventGenre eventGenre = new EventGenre(this, genre);
-            Genres.Add(eventGenre);
+            EventGenres.Add(eventGenre);
         }
 
-        public void RemoveGenre(Genre genre)
+        public void RemoveEventGenre(Genre genre)
         {
             EventGenre eventGenre = new EventGenre(this, genre);
-            Genres.Remove(eventGenre);
+            EventGenres.Remove(eventGenre);
         }
 
         public void AddPrice(Price price)

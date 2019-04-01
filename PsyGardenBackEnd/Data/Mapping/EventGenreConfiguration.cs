@@ -13,11 +13,8 @@ namespace PsyGardenBackEnd.Data.Mapping
         {
             builder.ToTable("EventGenre");
             builder.HasKey(eg => new { eg.EventId, eg.GenreId });
-            builder.HasOne(eg => eg.Event).WithMany(e => e.Genres).IsRequired(true).HasForeignKey(e=>e.EventId)
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.HasOne(eg => eg.Genre).WithMany().IsRequired(true).HasForeignKey(e=>e.GenreId)
+            builder.HasOne(eg => eg.Genre).WithMany().IsRequired(true).HasForeignKey(e => e.GenreId)
             .OnDelete(DeleteBehavior.Cascade);
-
         }
     }
 }

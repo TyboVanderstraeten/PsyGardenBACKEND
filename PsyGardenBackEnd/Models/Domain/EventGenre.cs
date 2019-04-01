@@ -10,7 +10,6 @@ namespace PsyGardenBackEnd.Models.Domain
         #region Properties
         public int EventId { get; set; }
         public int GenreId { get; set; }
-        public Event Event { get; set; }
         public Genre Genre { get; set; }
         #endregion
 
@@ -24,9 +23,8 @@ namespace PsyGardenBackEnd.Models.Domain
         {
             EventId = @event.EventId;
             GenreId = genre.GenreId;
-            Event = @event;
             Genre = genre;
-        } 
+        }
         #endregion
     }
 }

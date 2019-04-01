@@ -19,6 +19,7 @@ namespace PsyGardenBackEnd.Controllers
         {
             _genreRepository = genreRepository;
         }
+
         /// <summary>
         /// Get all genres
         /// </summary>
@@ -36,6 +37,7 @@ namespace PsyGardenBackEnd.Controllers
                 return Ok(genres);
             }
         }
+
         /// <summary>
         /// Get the genre with given id
         /// </summary>

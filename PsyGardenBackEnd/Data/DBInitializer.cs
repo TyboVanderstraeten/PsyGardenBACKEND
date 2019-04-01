@@ -77,8 +77,10 @@ namespace PsyGardenBackEnd.Data
                 Event psyfest = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
                     new DateTime(2019, 8, 24), Country.Portugal, "Idanha-a-Nova",
                    "Herdade do Torrão", "Lasientas", "440", "14500");
-                psyfest.AddGenre(psytrance);
-                psyfest.AddGenre(nitzhogoa);
+                psyfest.AddEventGenre(psytrance);
+                psyfest.AddEventGenre(nitzhogoa);
+                psyfest.AddEventGenre(fullOn);
+                psyfest.AddEventGenre(techno);
                 psyfest.AddPrice(standardPrice);
                 psyfest.AddPrice(earlyBirdPrice);
                 psyfest.AddPrice(VIPPrice);

@@ -10,6 +10,7 @@ namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class EventsController : ControllerBase
     {
         private IEventRepository _eventRepository;
@@ -21,6 +22,10 @@ namespace PsyGardenBackEnd.Controllers
             _genreRepository = genreRepository;
         }
 
+        /// <summary>
+        /// Get all events
+        /// </summary>
+        /// <returns>All events</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Event>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -35,6 +40,11 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Get the event with given id
+        /// </summary>
+        /// <param name="id">The id of the event</param>
+        /// <returns>The event</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Event), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,6 +59,11 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Create the event
+        /// </summary>
+        /// <param name="event">The event to be created</param>
+        /// <returns>The event</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -67,9 +82,9 @@ namespace PsyGardenBackEnd.Controllers
                     StreetNr = @event.StreetNr,
                     ZipCode = @event.ZipCode
                 };
-                foreach (var genre in @event.Genres) {
+                foreach (var genre in @event.EventGenres) {
                     Genre genreToAdd = _genreRepository.GetById(genre.GenreId);
-                    eventToCreate.AddGenre(genreToAdd);
+                    eventToCreate.AddEventGenre(genreToAdd);
                 }
                 foreach (var price in @event.Prices) {
                     eventToCreate.AddPrice(new Price() { Name = price.Name, Description = price.Description, Cost = price.Cost });
@@ -91,6 +106,11 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Edit the event with given id
+        /// </summary>
+        /// <param name="id">The id of the event</param>
+        /// <param name="event">The event to be edited</param>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -108,6 +128,24 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Partially edit the event with given id
+        /// </summary>
+        /// <param name="id">The id of the event</param>
+        /// <param name="event">The event to be partially edited</param>
+        [HttpPatch("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult PatchEvent(int id, EventDTO @event)
+        {
+            return NotFound();
+        }
+
+        /// <summary>
+        /// Delete the event with given id
+        /// </summary>
+        /// <param name="id">The id of the event</param>
+        /// <returns>The event</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -136,7 +174,7 @@ namespace PsyGardenBackEnd.Controllers
             @event.Street = eventDTO.Street;
             @event.StreetNr = eventDTO.StreetNr;
             @event.ZipCode = eventDTO.ZipCode;
-           foreach(var price in @event.Prices) {
+            foreach (var price in @event.Prices) {
                 //price.Name=
             }
         }
