@@ -10,7 +10,7 @@ namespace PsyGardenBackEnd.Data.Mapping
         {
             builder.ToTable("Genre");
             builder.HasKey(g => g.GenreId);
-            builder.Property(g => g.Name).IsRequired();
+            builder.Property(g => g.Name).IsRequired().HasMaxLength(25);
         }
     }
 }

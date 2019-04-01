@@ -34,6 +34,11 @@ namespace PsyGardenBackEnd
             //Add NSwag service
             services.AddOpenApiDocument();
 
+            //Add CORS service
+            services.AddCors(options => {
+                options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());
+            });
+
             services.AddDbContext<PsyGardenDBContext>(options => {
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
                 //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
@@ -61,6 +66,9 @@ namespace PsyGardenBackEnd
             //Use NSwag service
             app.UseSwaggerUi3();
             app.UseSwagger();
+
+            //Use CORS policies
+            app.UseCors("AllowAllOrigins");
 
             dbInitializer.InitializeData();
 

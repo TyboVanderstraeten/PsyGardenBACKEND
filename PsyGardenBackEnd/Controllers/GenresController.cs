@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PsyGardenBackEnd.DTO;
 using PsyGardenBackEnd.Models.Domain;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace PsyGardenBackEnd.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Genre>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<Genre>> Get()
+        public ActionResult<IEnumerable<Genre>> GetGenres()
         {
             IEnumerable<Genre> genres = _genreRepository.GetAll().OrderBy(g => g.Name).ToList();
             if (genres == null) {
@@ -35,7 +36,7 @@ namespace PsyGardenBackEnd.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Genre), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<Genre> Get(int id)
+        public ActionResult<Genre> GetGenre(int id)
         {
             Genre genre = _genreRepository.GetById(id);
             if (genre == null) {
@@ -49,12 +50,13 @@ namespace PsyGardenBackEnd.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Genre> Post(Genre genre)
+        public ActionResult<Genre> PostGenre(GenreDTO genre)
         {
             try {
-                _genreRepository.Add(genre);
+                Genre genreToCreate = new Genre() { Name = genre.Name };
+                _genreRepository.Add(genreToCreate);
                 _genreRepository.SaveChanges();
-                return CreatedAtAction(nameof(Get), new { id = genre.GenreId }, genre);
+                return CreatedAtAction(nameof(GetGenre), new { id = genreToCreate.GenreId }, genreToCreate);
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);
@@ -63,14 +65,16 @@ namespace PsyGardenBackEnd.Controllers
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult Put(int id, Genre genre)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult PutGenre(int id, GenreDTO genre)
         {
-            if (id != genre.GenreId) {
-                return BadRequest();
+            Genre genreToEdit = _genreRepository.GetById(id);
+            if (genreToEdit == null) {
+                return NotFound();
             }
             else {
-                _genreRepository.Update(genre);
+                genreToEdit.Name = genre.Name;
+                _genreRepository.Update(genreToEdit);
                 _genreRepository.SaveChanges();
                 return Ok();
             }
@@ -78,17 +82,17 @@ namespace PsyGardenBackEnd.Controllers
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult Delete(int id)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Genre> DeleteGenre(int id)
         {
             Genre genre = _genreRepository.GetById(id);
             if (genre == null) {
-                return NoContent();
+                return NotFound();
             }
             else {
                 _genreRepository.Delete(genre);
                 _genreRepository.SaveChanges();
-                return Ok();
+                return Ok(genre);
             }
         }
     }
