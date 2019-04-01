@@ -9,11 +9,11 @@ namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
     [ApiController]
-    public class EventController : ControllerBase
+    public class EventsController : ControllerBase
     {
         private IEventRepository _eventRepository;
 
-        public EventController(IEventRepository eventRepository)
+        public EventsController(IEventRepository eventRepository)
         {
             _eventRepository = eventRepository;
         }

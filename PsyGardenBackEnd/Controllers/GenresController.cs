@@ -4,17 +4,16 @@ using PsyGardenBackEnd.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
     [ApiController]
-    public class GenreController : ControllerBase
+    public class GenresController : ControllerBase
     {
         private IGenreRepository _genreRepository;
 
-        public GenreController(IGenreRepository genreRepository)
+        public GenresController(IGenreRepository genreRepository)
         {
             _genreRepository = genreRepository;
         }

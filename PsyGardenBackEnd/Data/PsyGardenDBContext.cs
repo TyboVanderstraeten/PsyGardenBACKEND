@@ -26,8 +26,5 @@ namespace PsyGardenBackEnd.Data
 
         public DbSet<Event> Events { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Price> Prices { get; set; }
-        public DbSet<Resource> Resources { get; set; }
-        public DbSet<EventGenre> EventGenres { get; set; }
     }
 }
