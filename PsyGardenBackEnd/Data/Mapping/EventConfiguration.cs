@@ -13,17 +13,16 @@ namespace PsyGardenBackEnd.Data.Mapping
         {
             builder.ToTable("Event");
             builder.HasKey(e => e.EventId);
-            builder.Property(e => e.Name).IsRequired();
+            builder.Property(e => e.Name).IsRequired().HasMaxLength(50);
             builder.Property(e => e.Description).IsRequired();
             builder.Property(e => e.StartDate).IsRequired();
             builder.Property(e => e.EndDate).IsRequired();
-            builder.Property(e => e.Country).IsRequired();
-            builder.Property(e => e.Region).IsRequired();
-            builder.Property(e => e.City).IsRequired();
-            builder.Property(e => e.Street).IsRequired();
-            builder.Property(e => e.StreetNr).IsRequired();
-            builder.Property(e => e.ZipCode).IsRequired();
-            builder.Property(e => e.EndDate).IsRequired();
+            builder.Property(e => e.Country).IsRequired().HasMaxLength(100);
+            builder.Property(e => e.Region).IsRequired().HasMaxLength(100);
+            builder.Property(e => e.City).IsRequired().HasMaxLength(100);
+            builder.Property(e => e.Street).IsRequired().HasMaxLength(100);
+            builder.Property(e => e.StreetNr).IsRequired().HasMaxLength(10);
+            builder.Property(e => e.ZipCode).IsRequired().HasMaxLength(10);
             builder.HasMany(e => e.Prices).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(e => e.Resources).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
         }

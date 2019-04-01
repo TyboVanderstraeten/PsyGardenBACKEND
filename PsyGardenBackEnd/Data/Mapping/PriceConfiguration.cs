@@ -14,7 +14,7 @@ namespace PsyGardenBackEnd.Data.Mapping
         {
             builder.ToTable("Price");
             builder.HasKey(p => p.PriceId);
-            builder.Property(p => p.Name).IsRequired();
+            builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Description).IsRequired();
             builder.Property(p => p.Cost).IsRequired();
         }

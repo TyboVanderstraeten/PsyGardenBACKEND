@@ -10,6 +10,7 @@ namespace PsyGardenBackEnd.DTO
     {
         [Required]
         [StringLength(25)]
+        [DataType(DataType.Text)]
         public string Name { get; set; }
     }
 }

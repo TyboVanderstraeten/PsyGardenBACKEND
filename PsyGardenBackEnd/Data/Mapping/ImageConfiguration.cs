@@ -12,7 +12,7 @@ namespace PsyGardenBackEnd.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
-            builder.Property(i => i.Alt).IsRequired();
+            builder.Property(i => i.Alt).IsRequired().HasMaxLength(50);
         }
     }
 }
