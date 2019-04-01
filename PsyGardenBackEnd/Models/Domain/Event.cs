@@ -7,7 +7,6 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public class Event
     {
-
         #region Properties
         public int EventId { get; set; }
         public string Name { get; set; }
@@ -24,6 +23,7 @@ namespace PsyGardenBackEnd.Models.Domain
         public ICollection<EventGenre> EventGenres { get; set; }
         public ICollection<Price> Prices { get; set; }
         public ICollection<Resource> Resources { get; set; }
+
         #endregion
 
         #region Constructors
