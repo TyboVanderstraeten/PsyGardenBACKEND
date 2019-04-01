@@ -26,3 +26,5 @@ E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcor
 E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.RazorTargetAssemblyInfo.cache
 E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.dll
 E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.pdb
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.xml
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.xml

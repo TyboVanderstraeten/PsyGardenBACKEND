@@ -18,7 +18,7 @@ namespace PsyGardenBackEnd.DTO
         public string Street { get; set; }
         public string StreetNr { get; set; }
         public string ZipCode { get; set; }
-        public IList<GenreDTO> Genres { get; set; }
+        public IList<EventGenreDTO> Genres { get; set; }
         public IList<PriceDTO> Prices { get; set; }
         public IList<ResourceDTO> Resources { get; set; }
     }

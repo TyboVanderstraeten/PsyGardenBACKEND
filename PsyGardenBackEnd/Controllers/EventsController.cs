@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PsyGardenBackEnd.DTO;
 using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd.Controllers
@@ -12,10 +13,12 @@ namespace PsyGardenBackEnd.Controllers
     public class EventsController : ControllerBase
     {
         private IEventRepository _eventRepository;
+        private IGenreRepository _genreRepository;
 
-        public EventsController(IEventRepository eventRepository)
+        public EventsController(IEventRepository eventRepository, IGenreRepository genreRepository)
         {
             _eventRepository = eventRepository;
+            _genreRepository = genreRepository;
         }
 
         [HttpGet]
@@ -49,12 +52,39 @@ namespace PsyGardenBackEnd.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Event> PostEvent(Event @event)
+        public ActionResult<Event> PostEvent(EventDTO @event)
         {
             try {
-                _eventRepository.Add(@event);
+                Event eventToCreate = new Event() {
+                    Name = @event.Name,
+                    Description = @event.Description,
+                    StartDate = @event.StartDate,
+                    EndDate = @event.EndDate,
+                    Country = @event.Country,
+                    Region = @event.Region,
+                    City = @event.City,
+                    Street = @event.Street,
+                    StreetNr = @event.StreetNr,
+                    ZipCode = @event.ZipCode
+                };
+                foreach (var genre in @event.Genres) {
+                    Genre genreToAdd = _genreRepository.GetById(genre.GenreId);
+                    eventToCreate.AddGenre(genreToAdd);
+                }
+                foreach (var price in @event.Prices) {
+                    eventToCreate.AddPrice(new Price() { Name = price.Name, Description = price.Description, Cost = price.Cost });
+                }
+                foreach (var resource in @event.Resources) {
+                    if (resource.Alt == null) {
+                        eventToCreate.AddResource(new Link() { Name = resource.Name, Url = resource.Url });
+                    }
+                    else {
+                        eventToCreate.AddResource(new Image() { Name = resource.Name, Url = resource.Url, Alt = resource.Alt });
+                    }
+                }
+                _eventRepository.Add(eventToCreate);
                 _eventRepository.SaveChanges();
-                return CreatedAtAction(nameof(GetEvent), new { id = @event.EventId }, @event);
+                return CreatedAtAction(nameof(GetEvent), new { id = eventToCreate.EventId }, eventToCreate);
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);
@@ -63,14 +93,16 @@ namespace PsyGardenBackEnd.Controllers
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult PutEvent(int id, Event @event)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult PutEvent(int id, EventDTO @event)
         {
-            if (id != @event.EventId) {
-                return BadRequest();
+            Event eventToEdit = _eventRepository.GetById(id);
+            if (eventToEdit == null) {
+                return NotFound();
             }
             else {
-                _eventRepository.Update(@event);
+                MapEventDTOToEvent(@event, eventToEdit);
+                _eventRepository.Update(eventToEdit);
                 _eventRepository.SaveChanges();
                 return Ok();
             }
@@ -89,6 +121,23 @@ namespace PsyGardenBackEnd.Controllers
                 _eventRepository.Delete(@event);
                 _eventRepository.SaveChanges();
                 return Ok();
+            }
+        }
+
+        private void MapEventDTOToEvent(EventDTO eventDTO, Event @event)
+        {
+            @event.Name = eventDTO.Name;
+            @event.Description = eventDTO.Description;
+            @event.StartDate = eventDTO.StartDate;
+            @event.EndDate = eventDTO.EndDate;
+            @event.Country = eventDTO.Country;
+            @event.Region = eventDTO.Region;
+            @event.City = eventDTO.City;
+            @event.Street = eventDTO.Street;
+            @event.StreetNr = eventDTO.StreetNr;
+            @event.ZipCode = eventDTO.ZipCode;
+           foreach(var price in @event.Prices) {
+                //price.Name=
             }
         }
     }

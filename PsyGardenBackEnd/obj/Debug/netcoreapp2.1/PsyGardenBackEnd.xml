@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PsyGardenBackEnd</name>
+    </assembly>
+    <members>
+        <member name="M:PsyGardenBackEnd.Controllers.GenresController.GetGenres">
+            <summary>
+            Get all genres
+            </summary>
+            <returns>All genres</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.GenresController.GetGenre(System.Int32)">
+            <summary>
+            Get the genre with given id
+            </summary>
+            <param name="id">The id of the genre</param>
+            <returns>The genre</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.GenresController.PostGenre(PsyGardenBackEnd.DTO.GenreDTO)">
+            <summary>
+            Create the genre
+            </summary>
+            <param name="genre">The genre to be created</param>
+            <returns>The genre</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.GenresController.PutGenre(System.Int32,PsyGardenBackEnd.DTO.GenreDTO)">
+            <summary>
+            Edit the genre with given id
+            </summary>
+            <param name="id">The id of the genre to be edited</param>
+            <param name="genre">The genre to be edited</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.GenresController.DeleteGenre(System.Int32)">
+            <summary>
+            Delete the genre with given id
+            </summary>
+            <param name="id">The id of the genre to be deleted</param>
+            <returns>The genre</returns>
+        </member>
+    </members>
+</doc>

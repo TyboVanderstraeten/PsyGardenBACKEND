@@ -32,7 +32,12 @@ namespace PsyGardenBackEnd
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //Add NSwag service
-            services.AddOpenApiDocument();
+            services.AddOpenApiDocument(apidoc => {
+                apidoc.DocumentName = "PsyGardenAPIdoc";
+                apidoc.Title = "PsyGarden API";
+                apidoc.Version = "v1";
+                apidoc.Description = "The PsyGarden API documentation";
+            });
 
             //Add CORS service
             services.AddCors(options => {

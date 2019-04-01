@@ -10,6 +10,7 @@ namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class GenresController : ControllerBase
     {
         private IGenreRepository _genreRepository;
@@ -18,7 +19,10 @@ namespace PsyGardenBackEnd.Controllers
         {
             _genreRepository = genreRepository;
         }
-
+        /// <summary>
+        /// Get all genres
+        /// </summary>
+        /// <returns>All genres</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Genre>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -32,7 +36,11 @@ namespace PsyGardenBackEnd.Controllers
                 return Ok(genres);
             }
         }
-
+        /// <summary>
+        /// Get the genre with given id
+        /// </summary>
+        /// <param name="id">The id of the genre</param>
+        /// <returns>The genre</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Genre), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -47,6 +55,11 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Create the genre
+        /// </summary>
+        /// <param name="genre">The genre to be created</param>
+        /// <returns>The genre</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -63,6 +76,11 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Edit the genre with given id
+        /// </summary>
+        /// <param name="id">The id of the genre</param>
+        /// <param name="genre">The genre to be edited</param>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -80,6 +98,11 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete the genre with given id
+        /// </summary>
+        /// <param name="id">The id of the genre</param>
+        /// <returns>The genre</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
