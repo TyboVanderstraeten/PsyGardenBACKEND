@@ -175,7 +175,7 @@ namespace PsyGardenBackEnd.Controllers
             @event.StreetNr = eventDTO.StreetNr;
             @event.ZipCode = eventDTO.ZipCode;
             foreach (var price in @event.Prices) {
-                //price.Name=
+               // price.Name = 
             }
         }
     }
