@@ -121,7 +121,7 @@ namespace PsyGardenBackEnd.Controllers
                 return NotFound();
             }
             else {
-                MapEventDTOToEvent(@event, eventToEdit);
+                //MapEventDTOToEvent(@event, eventToEdit);
                 _eventRepository.Update(eventToEdit);
                 _eventRepository.SaveChanges();
                 return Ok();
@@ -162,6 +162,7 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
+        /*
         private void MapEventDTOToEvent(EventDTO eventDTO, Event @event)
         {
             @event.Name = eventDTO.Name;
@@ -174,9 +175,22 @@ namespace PsyGardenBackEnd.Controllers
             @event.Street = eventDTO.Street;
             @event.StreetNr = eventDTO.StreetNr;
             @event.ZipCode = eventDTO.ZipCode;
+            //foreach(var eventGenre in @event.EventGenres) {
+            //    EventGenreDTO eventGenreFromDTO = eventDTO.EventGenres.SingleOrDefault(eg => eg.GenreId == eventGenre.GenreId);
+            //    eventGenre.
+            //}
             foreach (var price in @event.Prices) {
-               // price.Name = 
+                PriceDTO priceFromDTO = eventDTO.Prices.SingleOrDefault(p => p.PriceId == price.PriceId);
+                price.Name = priceFromDTO.Name;
+                price.Description = priceFromDTO.Description;
+                price.Cost = priceFromDTO.Cost;
+            }
+            foreach (var resource in @event.Resources) {
+                ResourceDTO resourceFromDTO = eventDTO.Resources.SingleOrDefault(r => r.ResourceId == resource.ResourceId);
+                resource.Name = resourceFromDTO.Name;
+                resource.Url = resourceFromDTO.Url;
             }
         }
+        */
     }
 }

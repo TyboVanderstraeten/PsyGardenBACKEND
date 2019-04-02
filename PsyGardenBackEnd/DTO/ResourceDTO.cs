@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace PsyGardenBackEnd.DTO
         [Required]
         [DataType(DataType.Text)]
         public string Url { get; set; }
-        [Required]
         [StringLength(50)]
         [DataType(DataType.Text)]
         public string Alt { get; set; }
