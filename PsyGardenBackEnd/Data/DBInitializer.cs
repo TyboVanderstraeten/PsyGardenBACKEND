@@ -64,32 +64,103 @@ namespace PsyGardenBackEnd.Data
                 _dbContext.SaveChanges();
 
                 //Some prices
-                Price standardPrice = new Price("Standard", "The standard price", 20.0M);
-                Price earlyBirdPrice = new Price("Early bird", "The early bird price", 14.5M);
-                Price VIPPrice = new Price("VIP", "The VIP price", 45.0M);
+                Price standardPrice1 = new Price("Standard", "The standard price", 20.0M);
+                Price earlyBirdPrice1 = new Price("Early bird", "The early bird price", 14.5M);
+                Price VIPPrice1 = new Price("VIP", "The VIP price", 45.0M);
+
+                Price standardPrice2 = new Price("Standard", "The standard price", 20.0M);
+                Price earlyBirdPrice2 = new Price("Early bird", "The early bird price", 14.5M);
+                Price VIPPrice2 = new Price("VIP", "The VIP price", 45.0M);
+
+                Price standardPrice3 = new Price("Standard", "The standard price", 20.0M);
+                Price earlyBirdPrice3 = new Price("Early bird", "The early bird price", 14.5M);
+                Price VIPPrice3 = new Price("VIP", "The VIP price", 45.0M);
+
+                Price standardPrice4 = new Price("Standard", "The standard price", 20.0M);
+                Price earlyBirdPrice4 = new Price("Early bird", "The early bird price", 14.5M);
+                Price VIPPrice4 = new Price("VIP", "The VIP price", 45.0M);
 
                 //Some resources
-                Resource websiteLink = new Link("Website", "www.psyfest.com");
-                Resource ticketLink = new Link("Tickets", "www.psyfest.tickets.com");
-                Resource headerImage = new Image("Header", "header.jpg", "header image");
+                Resource websiteLink1 = new Link("Website", "www.psyfest.com");
+                Resource ticketLink1 = new Link("Tickets", "www.psyfest.tickets.com");
+                Resource headerImage1 = new Image("Header", "header.jpg", "header image");
+
+                Resource websiteLink2 = new Link("Website", "www.psyfest.com");
+                Resource ticketLink2 = new Link("Tickets", "www.psyfest.tickets.com");
+                Resource headerImage2 = new Image("Header", "header.jpg", "header image");
+
+                Resource websiteLink3 = new Link("Website", "www.psyfest.com");
+                Resource ticketLink3 = new Link("Tickets", "www.psyfest.tickets.com");
+                Resource headerImage3 = new Image("Header", "header.jpg", "header image");
+
+                Resource websiteLink4 = new Link("Website", "www.psyfest.com");
+                Resource ticketLink4 = new Link("Tickets", "www.psyfest.tickets.com");
+                Resource headerImage4 = new Image("Header", "header.jpg", "header image");
 
                 //Event
-                Event psyfest = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
+                Event event1 = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
                     new DateTime(2019, 8, 24), Country.Portugal, "Idanha-a-Nova",
                    "Herdade do Torrão", "Lasientas", "440", "14500");
-                psyfest.AddEventGenre(psytrance);
-                psyfest.AddEventGenre(nitzhogoa);
-                psyfest.AddEventGenre(fullOn);
-                psyfest.AddEventGenre(techno);
-                psyfest.AddPrice(standardPrice);
-                psyfest.AddPrice(earlyBirdPrice);
-                psyfest.AddPrice(VIPPrice);
-                psyfest.AddResource(websiteLink);
-                psyfest.AddResource(ticketLink);
-                psyfest.AddResource(headerImage);
+                event1.AddEventGenre(psytrance);
+                event1.AddEventGenre(nitzhogoa);
+                event1.AddEventGenre(fullOn);
+                event1.AddEventGenre(techno);
+                event1.AddPrice(standardPrice1);
+                event1.AddPrice(earlyBirdPrice1);
+                event1.AddPrice(VIPPrice1);
+                event1.AddResource(websiteLink1);
+                event1.AddResource(ticketLink1);
+                event1.AddResource(headerImage1);
+
+                Event event2 = new Event("Ozora", "Hungary's best psychedelic gathering", new DateTime(2019, 9, 20),
+                new DateTime(2019, 9, 30), Country.Hungary, "Sdzopky",
+                "Tzorde dagia", "Slozt", "8", "1244");
+                event2.AddEventGenre(darkPsytrance);
+                event2.AddEventGenre(nitzhogoa);
+                event2.AddEventGenre(fullOn);
+                event2.AddEventGenre(techno);
+                event2.AddPrice(standardPrice2);
+                event2.AddPrice(earlyBirdPrice2);
+                event2.AddPrice(VIPPrice2);
+                event2.AddResource(websiteLink2);
+                event2.AddResource(ticketLink2);
+                event2.AddResource(headerImage2);
+
+                Event event3 = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 7, 12),
+                new DateTime(2019, 7, 14), Country.Belgium, "Henegouwen",
+                "Namen", "Bergstraat", "1", "7000");
+                event3.AddEventGenre(psyTech);
+                event3.AddEventGenre(psytrance);
+                event3.AddEventGenre(nitzhogoa);
+                event3.AddEventGenre(fullOn);
+                event3.AddEventGenre(techno);
+                event3.AddPrice(standardPrice3);
+                event3.AddPrice(earlyBirdPrice3);
+                event3.AddPrice(VIPPrice3);
+                event3.AddResource(websiteLink3);
+                event3.AddResource(ticketLink3);
+                event3.AddResource(headerImage3);
+
+                Event event4 = new Event("Connections", "Connect with eachother", new DateTime(2019, 8, 2),
+                new DateTime(2019, 8, 8), Country.Spain, "Madrid",
+                "Lopez", "Avenua constricto", "877", "84100");
+                event4.AddEventGenre(zenonseque);
+                event4.AddEventGenre(nitzhogoa);
+                event4.AddEventGenre(goa);
+                event4.AddEventGenre(darkPsytrance);
+                event4.AddEventGenre(darkRoots);
+                event4.AddPrice(standardPrice4);
+                event4.AddPrice(earlyBirdPrice4);
+                event4.AddPrice(VIPPrice4);
+                event4.AddResource(websiteLink4);
+                event4.AddResource(ticketLink4);
+                event4.AddResource(headerImage4);
 
                 //Adding to repo + saving context to DB
-                _dbContext.Events.Add(psyfest);
+                _dbContext.Events.Add(event1);
+                _dbContext.Events.Add(event2);
+                _dbContext.Events.Add(event3);
+                _dbContext.Events.Add(event4);
                 _dbContext.SaveChanges();
             }
         }
