@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PsyGardenBackEnd.DTO;
 using PsyGardenBackEnd.Models.Domain;
@@ -9,8 +11,9 @@ using System.Linq;
 namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
-    [ApiController]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiController]
     public class GenresController : ControllerBase
     {
         private IGenreRepository _genreRepository;

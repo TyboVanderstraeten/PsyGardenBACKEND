@@ -4,6 +4,18 @@
         <name>PsyGardenBackEnd</name>
     </assembly>
     <members>
+        <member name="M:PsyGardenBackEnd.Controllers.AccountController.CreateToken(PsyGardenBackEnd.DTO.LoginDTO)">
+            <summary>
+            Login
+            </summary>
+            <param name="loginDTO">The login details</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.AccountController.Register(PsyGardenBackEnd.DTO.RegisterDTO)">
+            <summary>
+            Register
+            </summary>
+            <param name="registerDTO">The register details</param>
+        </member>
         <member name="M:PsyGardenBackEnd.Controllers.EventsController.GetEvents">
             <summary>
             Get all events

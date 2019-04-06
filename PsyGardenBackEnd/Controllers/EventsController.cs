@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PsyGardenBackEnd.DTO;
@@ -9,8 +11,9 @@ using PsyGardenBackEnd.Models.Domain;
 namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
-    [ApiController]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiController]
     public class EventsController : ControllerBase
     {
         private IEventRepository _eventRepository;
@@ -27,6 +30,7 @@ namespace PsyGardenBackEnd.Controllers
         /// </summary>
         /// <returns>All events</returns>
         [HttpGet]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<Event>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<Event>> GetEvents()
