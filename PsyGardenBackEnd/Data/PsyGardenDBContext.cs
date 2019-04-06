@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PsyGardenBackEnd.Data.Mapping;
 using PsyGardenBackEnd.Models.Domain;
 using System;
 
 namespace PsyGardenBackEnd.Data
 {
-    public class PsyGardenDBContext : DbContext
+    public class PsyGardenDBContext : IdentityDbContext<IdentityUser>
     {
         public PsyGardenDBContext(DbContextOptions<PsyGardenDBContext> options) : base(options)
         {

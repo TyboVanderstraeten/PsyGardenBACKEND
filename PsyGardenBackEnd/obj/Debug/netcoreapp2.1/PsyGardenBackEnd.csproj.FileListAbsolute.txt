@@ -30,3 +30,4 @@ E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\bin\Debug\netcor
 E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.xml
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\bin\Debug\netcoreapp2.1\PsyGardenBackEnd.xml
 D:\School\2YS2\Web4\PsyGarden\PsyGardenBackEnd\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\PsyGardenBackEnd.xml
+E:\School\2YS2\Web4\PsyGarden\PsyGardenBACKEND\PsyGardenBackEnd\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
