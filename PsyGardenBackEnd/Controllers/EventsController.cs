@@ -12,7 +12,7 @@ namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
     [Produces("application/json")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class EventsController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace PsyGardenBackEnd.Controllers
         /// </summary>
         /// <returns>All events</returns>
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<Event>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<Event>> GetEvents()
