@@ -22,8 +22,10 @@ namespace PsyGardenBackEnd.DTO
         [Required]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
+        //[Required]
+        //public Country Country { get; set; }
         [Required]
-        public Country Country { get; set; }
+        public string Country { get; set; }
         [Required]
         [StringLength(100)]
         [DataType(DataType.Text)]

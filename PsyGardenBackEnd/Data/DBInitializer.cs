@@ -99,7 +99,7 @@ namespace PsyGardenBackEnd.Data
 
                 //Event
                 Event event1 = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
-                    new DateTime(2019, 8, 24), Country.Portugal, "Idanha-a-Nova",
+                    new DateTime(2019, 8, 24), "Portugal", "Idanha-a-Nova",
                    "Herdade do Torrão", "Lasientas", "440", "14500");
                 event1.AddEventGenre(psytrance);
                 event1.AddEventGenre(nitzhogoa);
@@ -113,7 +113,7 @@ namespace PsyGardenBackEnd.Data
                 event1.AddResource(headerImage1);
 
                 Event event2 = new Event("Ozora", "Hungary's best psychedelic gathering", new DateTime(2019, 9, 20),
-                new DateTime(2019, 9, 30), Country.Hungary, "Sdzopky",
+                new DateTime(2019, 9, 30), "Hungary", "Sdzopky",
                 "Tzorde dagia", "Slozt", "8", "1244");
                 event2.AddEventGenre(darkPsytrance);
                 event2.AddEventGenre(nitzhogoa);
@@ -127,7 +127,7 @@ namespace PsyGardenBackEnd.Data
                 event2.AddResource(headerImage2);
 
                 Event event3 = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 7, 12),
-                new DateTime(2019, 7, 14), Country.Belgium, "Henegouwen",
+                new DateTime(2019, 7, 14), "Belgium", "Henegouwen",
                 "Namen", "Bergstraat", "1", "7000");
                 event3.AddEventGenre(psyTech);
                 event3.AddEventGenre(psytrance);
@@ -142,7 +142,7 @@ namespace PsyGardenBackEnd.Data
                 event3.AddResource(headerImage3);
 
                 Event event4 = new Event("Connections", "Connect with eachother", new DateTime(2019, 8, 2),
-                new DateTime(2019, 8, 8), Country.Spain, "Madrid",
+                new DateTime(2019, 8, 8), "Spain", "Madrid",
                 "Lopez", "Avenua constricto", "877", "84100");
                 event4.AddEventGenre(zenonseque);
                 event4.AddEventGenre(nitzhogoa);
