@@ -99,8 +99,8 @@ namespace PsyGardenBackEnd.Data
 
                 //Event
                 Event event1 = new Event("Psyfest", "The annual psytrance gathering", new DateTime(2019, 8, 20),
-                    new DateTime(2019, 8, 24), "Portugal", "Idanha-a-Nova",
-                   "Herdade do Torrão", "Lasientas", "440", "14500");
+                    new DateTime(2019, 8, 24), "Belgium", "Oost-Vlaanderen",
+                   "Deinze", "Walgracht", "13", "9800");
                 event1.AddEventGenre(psytrance);
                 event1.AddEventGenre(nitzhogoa);
                 event1.AddEventGenre(fullOn);
@@ -113,8 +113,8 @@ namespace PsyGardenBackEnd.Data
                 event1.AddResource(headerImage1);
 
                 Event event2 = new Event("Ozora", "Hungary's best psychedelic gathering", new DateTime(2019, 9, 20),
-                new DateTime(2019, 9, 30), "Hungary", "Sdzopky",
-                "Tzorde dagia", "Slozt", "8", "1244");
+                new DateTime(2019, 9, 30), "Belgium", "Oost-Vlaanderen",
+                   "Deinze", "Tolpoortstraat", "13", "9800");
                 event2.AddEventGenre(darkPsytrance);
                 event2.AddEventGenre(nitzhogoa);
                 event2.AddEventGenre(fullOn);
@@ -127,8 +127,8 @@ namespace PsyGardenBackEnd.Data
                 event2.AddResource(headerImage2);
 
                 Event event3 = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 7, 12),
-                new DateTime(2019, 7, 14), "Belgium", "Henegouwen",
-                "Namen", "Bergstraat", "1", "7000");
+                new DateTime(2019, 7, 14), "Belgium", "Oost-Vlaanderen",
+                   "Gent", "Korenmarkt", "21", "9000");
                 event3.AddEventGenre(psyTech);
                 event3.AddEventGenre(psytrance);
                 event3.AddEventGenre(nitzhogoa);
@@ -142,8 +142,8 @@ namespace PsyGardenBackEnd.Data
                 event3.AddResource(headerImage3);
 
                 Event event4 = new Event("Connections", "Connect with eachother", new DateTime(2019, 8, 2),
-                new DateTime(2019, 8, 8), "Spain", "Madrid",
-                "Lopez", "Avenua constricto", "877", "84100");
+                new DateTime(2019, 8, 8), "Belgium", "Oost-Vlaanderen",
+                   "Gent", "Chinastraat", "1", "9000");
                 event4.AddEventGenre(zenonseque);
                 event4.AddEventGenre(nitzhogoa);
                 event4.AddEventGenre(goa);

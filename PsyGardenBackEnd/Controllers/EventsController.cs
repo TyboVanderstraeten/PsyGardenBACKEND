@@ -35,7 +35,7 @@ namespace PsyGardenBackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<Event>> GetEvents()
         {
-            IEnumerable<Event> events = _eventRepository.GetAll().OrderBy(e => e.Name).ToList();
+            IEnumerable<Event> events = _eventRepository.GetAll().OrderBy(e => e.StartDate).ToList();
             if (events == null) {
                 return NotFound();
             }
