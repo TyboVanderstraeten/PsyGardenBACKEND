@@ -107,7 +107,7 @@ namespace PsyGardenBackEnd.Data
                 Resource headerBoom = new Image("Header", "header.jpg", "header image");
                 #endregion
 
-                #region GENRES
+                #region EVENTS
                 //Event
                 Event psyFi = new Event("Psy-Fi", "Seed of Science", new DateTime(2019, 8, 28, 8, 0, 0),
                     new DateTime(2019, 9, 1, 23, 0, 0), "Netherlands", "Leeuwarden",
@@ -126,9 +126,9 @@ namespace PsyGardenBackEnd.Data
                 psyFi.AddResource(ticketsPsyFi);
                 psyFi.AddResource(headerPsyFi);
 
-                Event ozora = new Event("Ozora Festival", "Hungary's best psychedelic gathering", new DateTime(2019, 7, 29, 21, 0, 0),
-                new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora",
-                   "Dádpuszta", "Dádpuszta", "7015", "7086");
+                Event ozora = new Event("Ozora Festival", "The Ozora Festival, stylised as O.Z.O.R.A",
+                    new DateTime(2019, 7, 29, 21, 0, 0),
+                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086");
                 ozora.AddEventGenre(darkPsytrance);
                 ozora.AddEventGenre(nitzhogoa);
                 ozora.AddEventGenre(fullOn);
