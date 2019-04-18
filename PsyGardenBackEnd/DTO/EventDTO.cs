@@ -13,35 +13,42 @@ namespace PsyGardenBackEnd.DTO
         [StringLength(50)]
         [DataType(DataType.Text)]
         public string Name { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         public string Description { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
-        //[Required]
-        //public Country Country { get; set; }
+
         [Required]
         public string Country { get; set; }
+
         [Required]
         [StringLength(100)]
         [DataType(DataType.Text)]
         public string Region { get; set; }
+
         [Required]
         [StringLength(100)]
         [DataType(DataType.Text)]
         public string City { get; set; }
+
         [Required]
         [StringLength(100)]
         [DataType(DataType.Text)]
         public string Street { get; set; }
+
         [Required]
         [StringLength(10)]
         [DataType(DataType.Text)]
         public string StreetNr { get; set; }
+
         [Required]
         [StringLength(10)]
         [DataType(DataType.Text)]

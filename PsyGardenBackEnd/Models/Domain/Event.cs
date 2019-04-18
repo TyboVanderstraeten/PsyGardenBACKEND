@@ -14,7 +14,6 @@ namespace PsyGardenBackEnd.Models.Domain
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int NrOfDays { get { return (EndDate - StartDate).Days + 1; } }
-        //public Country Country { get; set; }
         public string Country { get; set; }
         public string Region { get; set; }
         public string City { get; set; }
