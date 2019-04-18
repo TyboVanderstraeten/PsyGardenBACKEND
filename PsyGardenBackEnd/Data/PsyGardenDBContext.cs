@@ -19,9 +19,7 @@ namespace PsyGardenBackEnd.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new EventConfiguration());
             modelBuilder.ApplyConfiguration(new PriceConfiguration());
-            modelBuilder.ApplyConfiguration(new ResourceConfiguration());
             modelBuilder.ApplyConfiguration(new LinkConfiguration());
-            modelBuilder.ApplyConfiguration(new ImageConfiguration());
             modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new EventGenreConfiguration());
         }

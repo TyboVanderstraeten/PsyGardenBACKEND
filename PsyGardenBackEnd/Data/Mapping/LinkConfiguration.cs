@@ -12,7 +12,11 @@ namespace PsyGardenBackEnd.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Link> builder)
         {
-           
+
+            builder.ToTable("Link");
+            builder.HasKey(r => r.LinkId);
+            builder.Property(r => r.Name).IsRequired().HasMaxLength(50);
+            builder.Property(r => r.Url).IsRequired().HasMaxLength(100);
         }
     }
 }

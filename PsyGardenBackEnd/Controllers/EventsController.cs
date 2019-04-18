@@ -84,7 +84,8 @@ namespace PsyGardenBackEnd.Controllers
                     City = @event.City,
                     Street = @event.Street,
                     StreetNr = @event.StreetNr,
-                    ZipCode = @event.ZipCode
+                    ZipCode = @event.ZipCode,
+                    HeaderImageURL = @event.HeaderImageURL
                 };
                 foreach (var genre in @event.EventGenres) {
                     Genre genreToAdd = _genreRepository.GetById(genre.GenreId);
@@ -93,13 +94,8 @@ namespace PsyGardenBackEnd.Controllers
                 foreach (var price in @event.Prices) {
                     eventToCreate.AddPrice(new Price() { Name = price.Name, Description = price.Description, Cost = price.Cost });
                 }
-                foreach (var resource in @event.Resources) {
-                    if (resource.Alt == null) {
-                        eventToCreate.AddResource(new Link() { Name = resource.Name, Url = resource.Url });
-                    }
-                    else {
-                        eventToCreate.AddResource(new Image() { Name = resource.Name, Url = resource.Url, Alt = resource.Alt });
-                    }
+                foreach (var resource in @event.Links) {
+                    eventToCreate.AddLink(new Link() { Name = resource.Name, Url = resource.Url });
                 }
                 _eventRepository.Add(eventToCreate);
                 _eventRepository.SaveChanges();
@@ -166,8 +162,8 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
-        /*
-        private void MapEventDTOToEvent(EventDTO eventDTO, Event @event)
+
+        private void MapEventDTOToEvent(Event @event, EventDTO eventDTO)
         {
             @event.Name = eventDTO.Name;
             @event.Description = eventDTO.Description;
@@ -179,22 +175,23 @@ namespace PsyGardenBackEnd.Controllers
             @event.Street = eventDTO.Street;
             @event.StreetNr = eventDTO.StreetNr;
             @event.ZipCode = eventDTO.ZipCode;
-            //foreach(var eventGenre in @event.EventGenres) {
-            //    EventGenreDTO eventGenreFromDTO = eventDTO.EventGenres.SingleOrDefault(eg => eg.GenreId == eventGenre.GenreId);
-            //    eventGenre.
-            //}
+
+            foreach (var eventGenre in @event.EventGenres) {
+                EventGenreDTO eventGenreFromDTO = eventDTO.EventGenres.SingleOrDefault(eg => eg.GenreId == eventGenre.GenreId);
+            }
             foreach (var price in @event.Prices) {
                 PriceDTO priceFromDTO = eventDTO.Prices.SingleOrDefault(p => p.PriceId == price.PriceId);
                 price.Name = priceFromDTO.Name;
                 price.Description = priceFromDTO.Description;
                 price.Cost = priceFromDTO.Cost;
             }
-            foreach (var resource in @event.Resources) {
-                ResourceDTO resourceFromDTO = eventDTO.Resources.SingleOrDefault(r => r.ResourceId == resource.ResourceId);
-                resource.Name = resourceFromDTO.Name;
-                resource.Url = resourceFromDTO.Url;
-            }
+            //foreach (var resource in @event.Resources) {
+            //    LinkDTO resourceFromDTO = eventDTO.Resources.SingleOrDefault(r => r.ResourceId == resource.ResourceId);
+            //    resource.Name = resourceFromDTO.Name;
+            //    resource.Url = resourceFromDTO.Url;
+            //    // if(resource.)
+            //}
         }
-        */
+
     }
 }

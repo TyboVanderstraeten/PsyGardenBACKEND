@@ -54,8 +54,13 @@ namespace PsyGardenBackEnd.DTO
         [DataType(DataType.Text)]
         public string ZipCode { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        [DataType(DataType.Text)]
+        public string HeaderImageURL { get; set; }
+
         public IList<EventGenreDTO> EventGenres { get; set; }
         public IList<PriceDTO> Prices { get; set; }
-        public IList<ResourceDTO> Resources { get; set; }
+        public IList<LinkDTO> Links { get; set; }
     }
 }

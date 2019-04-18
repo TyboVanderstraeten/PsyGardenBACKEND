@@ -26,7 +26,7 @@ namespace PsyGardenBackEnd.Data.Repositories
             return _events
                 .Include(e => e.EventGenres).ThenInclude(eg => eg.Genre)
                 .Include(e => e.Prices)
-                .Include(e => e.Resources)
+                .Include(e => e.Links)
                 .ToList();
         }
 
@@ -35,7 +35,7 @@ namespace PsyGardenBackEnd.Data.Repositories
             return _events
                 .Include(e => e.EventGenres).ThenInclude(eg => eg.Genre)
                 .Include(e => e.Prices)
-                .Include(e => e.Resources)
+                .Include(e => e.Links)
                 .SingleOrDefault(e => e.EventId == eventId);
         }
 

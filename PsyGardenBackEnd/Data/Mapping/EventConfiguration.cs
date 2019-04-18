@@ -23,8 +23,9 @@ namespace PsyGardenBackEnd.Data.Mapping
             builder.Property(e => e.Street).IsRequired().HasMaxLength(100);
             builder.Property(e => e.StreetNr).IsRequired().HasMaxLength(10);
             builder.Property(e => e.ZipCode).IsRequired().HasMaxLength(10);
+            builder.Property(e => e.HeaderImageURL).IsRequired().HasMaxLength(100);
             builder.HasMany(e => e.Prices).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(e => e.Resources).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(e => e.Links).WithOne().IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

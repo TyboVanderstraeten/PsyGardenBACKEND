@@ -88,30 +88,26 @@ namespace PsyGardenBackEnd.Data
 
                 #endregion
 
-                #region RESOURCES
+                #region Links
                 //Some resources
-                Resource websitePsyFi = new Link("Website", "www.psy-fi.nl");
-                Resource ticketsPsyFi = new Link("Tickets", "www.psy-fi.nl/tickets");
-                Resource headerPsyFi = new Image("Header", "header.jpg", "header image");
+                Link websitePsyFi = new Link("Website", "www.psy-fi.nl");
+                Link ticketsPsyFi = new Link("Tickets", "www.psy-fi.nl/tickets");
 
-                Resource websiteOzora = new Link("Website", "ozorafestival.eu");
-                Resource ticketsOzora = new Link("Tickets", "ozorafestival.eu/tickets/buy-a-ticket-here/");
-                Resource headerOzora = new Image("Header", "header.jpg", "header image");
+                Link websiteOzora = new Link("Website", "ozorafestival.eu");
+                Link ticketsOzora = new Link("Tickets", "ozorafestival.eu/tickets/buy-a-ticket-here/");
 
-                Resource websiteSpaceSafari = new Link("Website", "www.space-safari.com");
-                Resource ticketsSpaceSafari = new Link("Tickets", "www.space-safari.com/tickets/");
-                Resource headerSpaceSafari = new Image("Header", "header.jpg", "header image");
+                Link websiteSpaceSafari = new Link("Website", "www.space-safari.com");
+                Link ticketsSpaceSafari = new Link("Tickets", "www.space-safari.com/tickets/");
 
-                Resource websiteBoom = new Link("Website", "www.boomfestival.org/boom2018/");
-                Resource ticketsBoom = new Link("Tickets", "www.boomfestival.org/boom2018/tickets/");
-                Resource headerBoom = new Image("Header", "header.jpg", "header image");
+                Link websiteBoom = new Link("Website", "www.boomfestival.org/boom2018/");
+                Link ticketsBoom = new Link("Tickets", "www.boomfestival.org/boom2018/tickets/");
                 #endregion
 
                 #region EVENTS
                 //Event
                 Event psyFi = new Event("Psy-Fi", "Seed of Science", new DateTime(2019, 8, 28, 8, 0, 0),
                     new DateTime(2019, 9, 1, 23, 0, 0), "Netherlands", "Leeuwarden",
-                   "Leeuwarden", "De Groene Ster", "", "8926");
+                   "Leeuwarden", "De Groene Ster", "", "8926","img.jpg");
                 psyFi.AddEventGenre(psytrance);
                 psyFi.AddEventGenre(nitzhogoa);
                 psyFi.AddEventGenre(fullOn);
@@ -122,25 +118,23 @@ namespace PsyGardenBackEnd.Data
                 psyFi.AddPrice(gatesFullWeekPF);
                 psyFi.AddPrice(gatesWeekendPF);
                 psyFi.AddPrice(gatesSundayPF);
-                psyFi.AddResource(websitePsyFi);
-                psyFi.AddResource(ticketsPsyFi);
-                psyFi.AddResource(headerPsyFi);
+                psyFi.AddLink(websitePsyFi);
+                psyFi.AddLink(ticketsPsyFi);
 
                 Event ozora = new Event("Ozora Festival", "The Ozora Festival, stylised as O.Z.O.R.A",
                     new DateTime(2019, 7, 29, 21, 0, 0),
-                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086");
+                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086","img.jpg");
                 ozora.AddEventGenre(darkPsytrance);
                 ozora.AddEventGenre(nitzhogoa);
                 ozora.AddEventGenre(fullOn);
                 ozora.AddEventGenre(techno);
                 ozora.AddPrice(ticketPriceO);
-                ozora.AddResource(websiteOzora);
-                ozora.AddResource(ticketsOzora);
-                ozora.AddResource(headerOzora);
+                ozora.AddLink(websiteOzora);
+                ozora.AddLink(ticketsOzora);
 
                 Event spaceSafari = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 8, 30, 14, 0, 0),
                 new DateTime(2019, 9, 2, 14, 0, 0), "Belgium", "Namen",
-                   "Massembre", "Domaine De Massembre", "", "5543");
+                   "Massembre", "Domaine De Massembre", "", "5543","img.jpg");
                 spaceSafari.AddEventGenre(psyTech);
                 spaceSafari.AddEventGenre(psytrance);
                 spaceSafari.AddEventGenre(nitzhogoa);
@@ -149,22 +143,20 @@ namespace PsyGardenBackEnd.Data
                 spaceSafari.AddPrice(presale1stPhaseSS);
                 spaceSafari.AddPrice(presale2ndPhaseSS);
                 spaceSafari.AddPrice(presale3rdPhaseSS);
-                spaceSafari.AddResource(websiteSpaceSafari);
-                spaceSafari.AddResource(ticketsSpaceSafari);
-                spaceSafari.AddResource(headerSpaceSafari);
+                spaceSafari.AddLink(websiteSpaceSafari);
+                spaceSafari.AddLink(ticketsSpaceSafari);
 
                 Event boom = new Event("Boom", "Connect with eachother", new DateTime(2020, 7, 28, 0, 0, 0),
                 new DateTime(2020, 8, 4, 0, 0, 0), "Portugal", "Castelo Branco",
-                   "Idanha-a-Nova", "Boomland Alcafozes", "", "6060-011");
+                   "Idanha-a-Nova", "Boomland Alcafozes", "", "6060-011","img.jpg");
                 boom.AddEventGenre(zenonseque);
                 boom.AddEventGenre(nitzhogoa);
                 boom.AddEventGenre(goa);
                 boom.AddEventGenre(darkPsytrance);
                 boom.AddEventGenre(darkRoots);
                 boom.AddPrice(unknownB);
-                boom.AddResource(websiteBoom);
-                boom.AddResource(ticketsBoom);
-                boom.AddResource(headerBoom);
+                boom.AddLink(websiteBoom);
+                boom.AddLink(ticketsBoom);
                 #endregion
 
                 //Adding to repo + saving context to DB
