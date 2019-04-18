@@ -43,13 +43,6 @@
             <param name="id">The id of the event</param>
             <param name="event">The event to be edited</param>
         </member>
-        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PatchEvent(System.Int32,PsyGardenBackEnd.DTO.EventDTO)">
-            <summary>
-            Partially edit the event with given id
-            </summary>
-            <param name="id">The id of the event</param>
-            <param name="event">The event to be partially edited</param>
-        </member>
         <member name="M:PsyGardenBackEnd.Controllers.EventsController.DeleteEvent(System.Int32)">
             <summary>
             Delete the event with given id

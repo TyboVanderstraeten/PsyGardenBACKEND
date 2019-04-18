@@ -157,27 +157,7 @@ namespace PsyGardenBackEnd.Controllers
                     link.Name = linkFromDTO.Name;
                     link.Url = linkFromDTO.Url;
                 }
-                _eventRepository.Update(eventToEdit);
-                _eventRepository.SaveChanges();
-                return Ok();
-            }
-        }
 
-        /// <summary>
-        /// Partially edit the event with given id
-        /// </summary>
-        /// <param name="id">The id of the event</param>
-        /// <param name="event">The event to be partially edited</param>
-        [HttpPatch("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult PatchEvent(int id, EventDTO eventDTO)
-        {
-            Event eventToEdit = _eventRepository.GetById(id);
-            if (eventToEdit == null) {
-                return NotFound();
-            }
-            else {
                 _eventRepository.Update(eventToEdit);
                 _eventRepository.SaveChanges();
                 return Ok();
