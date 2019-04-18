@@ -71,32 +71,36 @@ namespace PsyGardenBackEnd.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Event> PostEvent(EventDTO @event)
+        public ActionResult<Event> PostEvent(EventDTO eventDTO)
         {
             try {
                 Event eventToCreate = new Event() {
-                    Name = @event.Name,
-                    Description = @event.Description,
-                    StartDate = @event.StartDate,
-                    EndDate = @event.EndDate,
-                    Country = @event.Country,
-                    Region = @event.Region,
-                    City = @event.City,
-                    Street = @event.Street,
-                    StreetNr = @event.StreetNr,
-                    ZipCode = @event.ZipCode,
-                    HeaderImageURL = @event.HeaderImageURL
+                    Name = eventDTO.Name,
+                    Description = eventDTO.Description,
+                    StartDate = eventDTO.StartDate,
+                    EndDate = eventDTO.EndDate,
+                    Country = eventDTO.Country,
+                    Region = eventDTO.Region,
+                    City = eventDTO.City,
+                    Street = eventDTO.Street,
+                    StreetNr = eventDTO.StreetNr,
+                    ZipCode = eventDTO.ZipCode,
+                    HeaderImageURL = eventDTO.HeaderImageURL
                 };
-                foreach (var genre in @event.EventGenres) {
+
+                foreach (var genre in eventDTO.EventGenres) {
                     Genre genreToAdd = _genreRepository.GetById(genre.GenreId);
                     eventToCreate.AddEventGenre(genreToAdd);
                 }
-                foreach (var price in @event.Prices) {
+
+                foreach (var price in eventDTO.Prices) {
                     eventToCreate.AddPrice(new Price() { Name = price.Name, Description = price.Description, Cost = price.Cost });
                 }
-                foreach (var resource in @event.Links) {
+
+                foreach (var resource in eventDTO.Links) {
                     eventToCreate.AddLink(new Link() { Name = resource.Name, Url = resource.Url });
                 }
+
                 _eventRepository.Add(eventToCreate);
                 _eventRepository.SaveChanges();
                 return CreatedAtAction(nameof(GetEvent), new { id = eventToCreate.EventId }, eventToCreate);
@@ -114,14 +118,45 @@ namespace PsyGardenBackEnd.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult PutEvent(int id, EventDTO @event)
+        public ActionResult PutEvent(int id, EventDTO eventDTO)
         {
             Event eventToEdit = _eventRepository.GetById(id);
             if (eventToEdit == null) {
                 return NotFound();
             }
             else {
-                //MapEventDTOToEvent(@event, eventToEdit);
+                eventToEdit.Name = eventDTO.Name;
+                eventToEdit.Description = eventDTO.Description;
+                eventToEdit.StartDate = eventDTO.StartDate;
+                eventToEdit.EndDate = eventDTO.EndDate;
+                eventToEdit.Country = eventDTO.Country;
+                eventToEdit.Region = eventDTO.Region;
+                eventToEdit.City = eventDTO.City;
+                eventToEdit.Street = eventDTO.Street;
+                eventToEdit.StreetNr = eventDTO.StreetNr;
+                eventToEdit.ZipCode = eventDTO.ZipCode;
+                eventToEdit.HeaderImageURL = eventDTO.HeaderImageURL;
+
+                foreach (var eventGenre in eventToEdit.EventGenres) {
+                    Genre genreToRemove = eventGenre.Genre;
+                    eventToEdit.RemoveEventGenre(genreToRemove);
+                    EventGenreDTO eventGenreFromDTO = eventDTO.EventGenres.SingleOrDefault(eg => eg.GenreId == eventGenre.GenreId);
+                    Genre genreToAdd = _genreRepository.GetById(eventGenreFromDTO.GenreId);
+                    eventToEdit.AddEventGenre(genreToAdd);
+                }
+
+                foreach (var price in eventToEdit.Prices) {
+                    PriceDTO priceFromDTO = eventDTO.Prices.SingleOrDefault(p => p.PriceId == price.PriceId);
+                    price.Name = priceFromDTO.Name;
+                    price.Description = priceFromDTO.Description;
+                    price.Cost = priceFromDTO.Cost;
+                }
+
+                foreach (var link in @eventToEdit.Links) {
+                    LinkDTO linkFromDTO = eventDTO.Links.SingleOrDefault(l => l.LinkId == link.LinkId);
+                    link.Name = linkFromDTO.Name;
+                    link.Url = linkFromDTO.Url;
+                }
                 _eventRepository.Update(eventToEdit);
                 _eventRepository.SaveChanges();
                 return Ok();
@@ -136,9 +171,17 @@ namespace PsyGardenBackEnd.Controllers
         [HttpPatch("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult PatchEvent(int id, EventDTO @event)
+        public ActionResult PatchEvent(int id, EventDTO eventDTO)
         {
-            return NotFound();
+            Event eventToEdit = _eventRepository.GetById(id);
+            if (eventToEdit == null) {
+                return NotFound();
+            }
+            else {
+                _eventRepository.Update(eventToEdit);
+                _eventRepository.SaveChanges();
+                return Ok();
+            }
         }
 
         /// <summary>
@@ -161,37 +204,5 @@ namespace PsyGardenBackEnd.Controllers
                 return Ok();
             }
         }
-
-
-        private void MapEventDTOToEvent(Event @event, EventDTO eventDTO)
-        {
-            @event.Name = eventDTO.Name;
-            @event.Description = eventDTO.Description;
-            @event.StartDate = eventDTO.StartDate;
-            @event.EndDate = eventDTO.EndDate;
-            @event.Country = eventDTO.Country;
-            @event.Region = eventDTO.Region;
-            @event.City = eventDTO.City;
-            @event.Street = eventDTO.Street;
-            @event.StreetNr = eventDTO.StreetNr;
-            @event.ZipCode = eventDTO.ZipCode;
-
-            foreach (var eventGenre in @event.EventGenres) {
-                EventGenreDTO eventGenreFromDTO = eventDTO.EventGenres.SingleOrDefault(eg => eg.GenreId == eventGenre.GenreId);
-            }
-            foreach (var price in @event.Prices) {
-                PriceDTO priceFromDTO = eventDTO.Prices.SingleOrDefault(p => p.PriceId == price.PriceId);
-                price.Name = priceFromDTO.Name;
-                price.Description = priceFromDTO.Description;
-                price.Cost = priceFromDTO.Cost;
-            }
-            //foreach (var resource in @event.Resources) {
-            //    LinkDTO resourceFromDTO = eventDTO.Resources.SingleOrDefault(r => r.ResourceId == resource.ResourceId);
-            //    resource.Name = resourceFromDTO.Name;
-            //    resource.Url = resourceFromDTO.Url;
-            //    // if(resource.)
-            //}
-        }
-
     }
 }

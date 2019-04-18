@@ -65,7 +65,7 @@ namespace PsyGardenBackEnd.Models.Domain
 
         public void RemoveEventGenre(Genre genre)
         {
-            EventGenre eventGenre = new EventGenre(this, genre);
+            EventGenre eventGenre = EventGenres.SingleOrDefault(eg => eg.GenreId == genre.GenreId);
             EventGenres.Remove(eventGenre);
         }
 
