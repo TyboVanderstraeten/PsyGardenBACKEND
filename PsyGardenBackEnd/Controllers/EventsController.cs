@@ -181,7 +181,7 @@ namespace PsyGardenBackEnd.Controllers
             else {
                 _eventRepository.Delete(@event);
                 _eventRepository.SaveChanges();
-                return Ok();
+                return Ok(@event);
             }
         }
     }

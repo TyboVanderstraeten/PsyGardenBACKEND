@@ -9,9 +9,7 @@ namespace PsyGardenBackEnd.Models.Domain
     {
         User GetByEmail(string email);
         void Add(User user);
-        void Update(User user);
         void Delete(User user);
         void SaveChanges();
-
     }
 }

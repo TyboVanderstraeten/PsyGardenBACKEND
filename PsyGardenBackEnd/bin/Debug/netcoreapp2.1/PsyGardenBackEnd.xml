@@ -84,5 +84,17 @@
             <param name="id">The id of the genre</param>
             <returns>The genre</returns>
         </member>
+        <member name="M:PsyGardenBackEnd.Controllers.UserController.GetUser">
+            <summary>
+            Get the user with given email
+            </summary>
+            <returns>The user</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.UserController.DeleteUser">
+            <summary>
+            Delete the user with given email
+            </summary>
+            <returns>The user</returns>
+        </member>
     </members>
 </doc>

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PsyGardenBackEnd.DTO;
+using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd.Controllers
 {
@@ -21,13 +20,15 @@ namespace PsyGardenBackEnd.Controllers
     {
         private SignInManager<IdentityUser> _signInManager;
         private UserManager<IdentityUser> _userManager;
+        private IUserRepository _userRepository;
         private IConfiguration _configuration;
 
         public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager,
-            IConfiguration configuration)
+            IUserRepository userRepository, IConfiguration configuration)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _userRepository = userRepository;
             _configuration = configuration;
         }
 
@@ -62,11 +63,14 @@ namespace PsyGardenBackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<String>> Register(RegisterDTO registerDTO)
         {
-            IdentityUser user = new IdentityUser { UserName = registerDTO.Email, Email = registerDTO.Email };
-            var result = await _userManager.CreateAsync(user, registerDTO.Password);
+            IdentityUser identityUser = new IdentityUser() { UserName = registerDTO.Email, Email = registerDTO.Email };
+            User user = new User() { FirstName = registerDTO.FirstName, LastName = registerDTO.LastName, Email = registerDTO.Email };
+            var result = await _userManager.CreateAsync(identityUser, registerDTO.Password);
 
             if (result.Succeeded) {
-                string token = GetToken(user);
+                _userRepository.Add(user);
+                _userRepository.SaveChanges();
+                string token = GetToken(identityUser);
                 return Created("", token);
             }
             return BadRequest();

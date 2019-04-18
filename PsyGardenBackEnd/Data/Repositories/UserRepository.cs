@@ -27,11 +27,6 @@ namespace PsyGardenBackEnd.Data.Repositories
             _users.Add(user);
         }
 
-        public void Update(User user)
-        {
-            _users.Update(user);
-        }
-
         public void Delete(User user)
         {
             _users.Remove(user);
