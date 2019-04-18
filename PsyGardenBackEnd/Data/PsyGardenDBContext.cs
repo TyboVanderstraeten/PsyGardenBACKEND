@@ -22,9 +22,13 @@ namespace PsyGardenBackEnd.Data
             modelBuilder.ApplyConfiguration(new LinkConfiguration());
             modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new EventGenreConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            //modelBuilder.ApplyConfiguration(new UserInterestedConfiguration());
+            //modelBuilder.ApplyConfiguration(new UserGoingConfiguration());
         }
 
         public DbSet<Event> Events { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

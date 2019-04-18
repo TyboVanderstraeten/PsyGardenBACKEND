@@ -62,7 +62,6 @@ namespace PsyGardenBackEnd.Data
                 _dbContext.Genres.Add(ethnicChill);
                 _dbContext.Genres.Add(nitzhogoa);
                 _dbContext.Genres.Add(other);
-                _dbContext.SaveChanges();
                 #endregion
 
                 #region PRICES
@@ -88,7 +87,7 @@ namespace PsyGardenBackEnd.Data
 
                 #endregion
 
-                #region Links
+                #region LINKS
                 //Some resources
                 Link websitePsyFi = new Link("Website", "www.psy-fi.nl");
                 Link ticketsPsyFi = new Link("Tickets", "www.psy-fi.nl/tickets");
@@ -106,8 +105,8 @@ namespace PsyGardenBackEnd.Data
                 #region EVENTS
                 //Event
                 Event psyFi = new Event("Psy-Fi", "Seed of Science", new DateTime(2019, 8, 28, 8, 0, 0),
-                    new DateTime(2019, 9, 1, 23, 0, 0), "Netherlands",null,
-                   "Leeuwarden", "De Groene Ster", null, "8926","img.jpg");
+                    new DateTime(2019, 9, 1, 23, 0, 0), "Netherlands", null,
+                   "Leeuwarden", "De Groene Ster", null, "8926", "img.jpg");
                 psyFi.AddEventGenre(psytrance);
                 psyFi.AddEventGenre(nitzhogoa);
                 psyFi.AddEventGenre(fullOn);
@@ -123,7 +122,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event ozora = new Event("Ozora Festival", "The Ozora Festival, stylised as O.Z.O.R.A",
                     new DateTime(2019, 7, 29, 21, 0, 0),
-                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086","img.jpg");
+                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086", "img.jpg");
                 ozora.AddEventGenre(darkPsytrance);
                 ozora.AddEventGenre(nitzhogoa);
                 ozora.AddEventGenre(fullOn);
@@ -134,7 +133,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event spaceSafari = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 8, 30, 14, 0, 0),
                 new DateTime(2019, 9, 2, 14, 0, 0), "Belgium", "Namen",
-                   "Massembre", "Domaine De Massembre", null, "5543","img.jpg");
+                   "Massembre", "Domaine De Massembre", null, "5543", "img.jpg");
                 spaceSafari.AddEventGenre(psyTech);
                 spaceSafari.AddEventGenre(psytrance);
                 spaceSafari.AddEventGenre(nitzhogoa);
@@ -148,7 +147,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event boom = new Event("Boom", "Connect with eachother", new DateTime(2020, 7, 28, 0, 0, 0),
                 new DateTime(2020, 8, 4, 0, 0, 0), "Portugal", "Castelo Branco",
-                   "Idanha-a-Nova", "Boomland Alcafozes", null, "6060-011","img.jpg");
+                   "Idanha-a-Nova", "Boomland Alcafozes", null, "6060-011", "img.jpg");
                 boom.AddEventGenre(zenonseque);
                 boom.AddEventGenre(nitzhogoa);
                 boom.AddEventGenre(goa);
@@ -157,13 +156,21 @@ namespace PsyGardenBackEnd.Data
                 boom.AddPrice(unknownB);
                 boom.AddLink(websiteBoom);
                 boom.AddLink(ticketsBoom);
-                #endregion
 
-                //Adding to repo + saving context to DB
                 _dbContext.Events.Add(psyFi);
                 _dbContext.Events.Add(ozora);
                 _dbContext.Events.Add(spaceSafari);
                 _dbContext.Events.Add(boom);
+                #endregion
+
+                #region USERS
+                User admin = new User("Tybo", "Vanderstraeten", "tybo.admin@psygarden.com");
+                admin.IsAdmin = true;
+                User normalUser = new User("Tim", "Geldof", "tim@psygarden.com");
+                _dbContext.Users.Add(admin);
+                _dbContext.Users.Add(normalUser);
+                #endregion
+
                 _dbContext.SaveChanges();
             }
         }

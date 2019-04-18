@@ -95,13 +95,15 @@ namespace PsyGardenBackEnd
             });
 
             services.AddDbContext<PsyGardenDBContext>(options => {
-                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
+                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
             });
 
+            //Add repositories
             services.AddScoped<DBInitializer>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

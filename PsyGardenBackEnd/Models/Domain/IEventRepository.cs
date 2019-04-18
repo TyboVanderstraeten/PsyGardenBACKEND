@@ -5,7 +5,6 @@ namespace PsyGardenBackEnd.Models.Domain
     public interface IEventRepository
     {
         IEnumerable<Event> GetAll();
-        IEnumerable<Event> GetAllWithGenre(Genre genre);
         Event GetById(int eventId);
         void Add(Event @event);
         void Update(Event @event);
