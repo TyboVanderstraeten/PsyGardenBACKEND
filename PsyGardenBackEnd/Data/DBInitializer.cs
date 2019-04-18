@@ -106,8 +106,8 @@ namespace PsyGardenBackEnd.Data
                 #region EVENTS
                 //Event
                 Event psyFi = new Event("Psy-Fi", "Seed of Science", new DateTime(2019, 8, 28, 8, 0, 0),
-                    new DateTime(2019, 9, 1, 23, 0, 0), "Netherlands", "Leeuwarden",
-                   "Leeuwarden", "De Groene Ster", "", "8926","img.jpg");
+                    new DateTime(2019, 9, 1, 23, 0, 0), "Netherlands",null,
+                   "Leeuwarden", "De Groene Ster", null, "8926","img.jpg");
                 psyFi.AddEventGenre(psytrance);
                 psyFi.AddEventGenre(nitzhogoa);
                 psyFi.AddEventGenre(fullOn);
@@ -134,7 +134,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event spaceSafari = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 8, 30, 14, 0, 0),
                 new DateTime(2019, 9, 2, 14, 0, 0), "Belgium", "Namen",
-                   "Massembre", "Domaine De Massembre", "", "5543","img.jpg");
+                   "Massembre", "Domaine De Massembre", null, "5543","img.jpg");
                 spaceSafari.AddEventGenre(psyTech);
                 spaceSafari.AddEventGenre(psytrance);
                 spaceSafari.AddEventGenre(nitzhogoa);
@@ -148,7 +148,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event boom = new Event("Boom", "Connect with eachother", new DateTime(2020, 7, 28, 0, 0, 0),
                 new DateTime(2020, 8, 4, 0, 0, 0), "Portugal", "Castelo Branco",
-                   "Idanha-a-Nova", "Boomland Alcafozes", "", "6060-011","img.jpg");
+                   "Idanha-a-Nova", "Boomland Alcafozes", null, "6060-011","img.jpg");
                 boom.AddEventGenre(zenonseque);
                 boom.AddEventGenre(nitzhogoa);
                 boom.AddEventGenre(goa);

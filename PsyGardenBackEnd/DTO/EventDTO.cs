@@ -29,7 +29,6 @@ namespace PsyGardenBackEnd.DTO
         [Required]
         public string Country { get; set; }
 
-        [Required]
         [StringLength(100)]
         [DataType(DataType.Text)]
         public string Region { get; set; }
@@ -44,7 +43,6 @@ namespace PsyGardenBackEnd.DTO
         [DataType(DataType.Text)]
         public string Street { get; set; }
 
-        [Required]
         [StringLength(10)]
         [DataType(DataType.Text)]
         public string StreetNr { get; set; }
