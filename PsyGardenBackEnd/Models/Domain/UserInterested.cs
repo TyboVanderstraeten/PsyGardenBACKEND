@@ -10,7 +10,7 @@ namespace PsyGardenBackEnd.Models.Domain
         #region Properties
         public int UserId { get; set; }
         public int EventId { get; set; }
-
+        public Event Event { get; set; }
         #endregion
 
         #region Constructors
@@ -23,6 +23,7 @@ namespace PsyGardenBackEnd.Models.Domain
         {
             UserId = user.UserId;
             EventId = @event.EventId;
+            Event = @event;
         }
         #endregion
     }

@@ -17,9 +17,21 @@ namespace PsyGardenBackEnd.Data.Repositories
             _dbContext = dbContext;
             _users = dbContext.Users;
         }
+
+        public IEnumerable<User> GetAll()
+        {
+            return _users
+                .Include(u => u.Interests).ThenInclude(ui => ui.Event)
+                .Include(u => u.Goings).ThenInclude(ug => ug.Event)
+                .ToList();
+        }
+
         public User GetByEmail(string email)
         {
-            return _users.SingleOrDefault(u => u.Email.Equals(email));
+            return _users
+                .Include(u => u.Interests).ThenInclude(ui => ui.Event)
+                .Include(u => u.Goings).ThenInclude(ug => ug.Event)
+                .SingleOrDefault(u => u.Email.Equals(email));
         }
 
         public void Add(User user)

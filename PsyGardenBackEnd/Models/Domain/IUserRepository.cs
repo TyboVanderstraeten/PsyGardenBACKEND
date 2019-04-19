@@ -7,6 +7,7 @@ namespace PsyGardenBackEnd.Models.Domain
 {
     public interface IUserRepository
     {
+        IEnumerable<User> GetAll();
         User GetByEmail(string email);
         void Add(User user);
         void Delete(User user);

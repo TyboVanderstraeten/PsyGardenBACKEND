@@ -23,8 +23,8 @@ namespace PsyGardenBackEnd.Data
             modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new EventGenreConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            //modelBuilder.ApplyConfiguration(new UserInterestedConfiguration());
-            //modelBuilder.ApplyConfiguration(new UserGoingConfiguration());
+            modelBuilder.ApplyConfiguration(new UserInterestedConfiguration());
+            modelBuilder.ApplyConfiguration(new UserGoingConfiguration());
         }
 
         public DbSet<Event> Events { get; set; }

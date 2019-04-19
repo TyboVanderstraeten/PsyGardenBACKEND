@@ -14,6 +14,10 @@ namespace PsyGardenBackEnd.Data.Mapping
         {
             builder.ToTable("UserInterested");
             builder.HasKey(ui => new { ui.UserId, ui.EventId });
+            builder.HasOne(ui => ui.Event).WithMany()
+                .IsRequired()
+                .HasForeignKey(ui => ui.EventId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

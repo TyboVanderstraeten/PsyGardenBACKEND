@@ -25,6 +25,7 @@ namespace PsyGardenBackEnd.Controllers
             _genreRepository = genreRepository;
         }
 
+        #region Main Endpoints
         /// <summary>
         /// Get all events
         /// </summary>
@@ -184,5 +185,10 @@ namespace PsyGardenBackEnd.Controllers
                 return Ok(@event);
             }
         }
+        #endregion
+
+        #region Secondary Endpoints
+
+        #endregion
     }
 }

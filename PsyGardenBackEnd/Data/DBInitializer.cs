@@ -166,7 +166,14 @@ namespace PsyGardenBackEnd.Data
                 #region USERS
                 User admin = new User("Tybo", "Vanderstraeten", "tybo.admin@psygarden.com");
                 admin.IsAdmin = true;
+                admin.AddInterested(psyFi);
+                admin.AddInterested(ozora);
+                admin.AddGoing(spaceSafari);
+
                 User normalUser = new User("Tim", "Geldof", "tim@psygarden.com");
+                normalUser.AddInterested(ozora);
+                normalUser.AddGoing(boom);
+
                 _dbContext.Users.Add(admin);
                 _dbContext.Users.Add(normalUser);
                 #endregion
