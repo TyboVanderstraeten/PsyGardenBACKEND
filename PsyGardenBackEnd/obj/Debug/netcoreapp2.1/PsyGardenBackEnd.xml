@@ -84,13 +84,13 @@
             <param name="id">The id of the genre</param>
             <returns>The genre</returns>
         </member>
-        <member name="M:PsyGardenBackEnd.Controllers.UserController.GetUser">
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.GetUser">
             <summary>
             Get the user with given email
             </summary>
             <returns>The user</returns>
         </member>
-        <member name="M:PsyGardenBackEnd.Controllers.UserController.DeleteUser">
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteUser">
             <summary>
             Delete the user with given email
             </summary>

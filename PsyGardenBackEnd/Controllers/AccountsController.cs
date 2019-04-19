@@ -14,7 +14,7 @@ using PsyGardenBackEnd.Models.Domain;
 
 namespace PsyGardenBackEnd.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("PsyGardenAPI/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
     {

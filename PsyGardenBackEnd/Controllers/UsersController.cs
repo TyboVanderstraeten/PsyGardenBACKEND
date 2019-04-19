@@ -7,11 +7,11 @@ namespace PsyGardenBackEnd.Controllers
     [Route("PsyGardenAPI/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private IUserRepository _userRepository;
 
-        public UserController(IUserRepository userRepository)
+        public UsersController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
