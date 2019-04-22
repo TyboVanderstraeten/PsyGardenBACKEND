@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PsyGardenBackEnd.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -60,13 +61,14 @@ namespace PsyGardenBackEnd.Controllers
         /// <summary>
         /// Delete the user with given email
         /// </summary>
+        /// <param name="email">The email of the user</param>
         /// <returns>The user</returns>
-        [HttpDelete]
+        [HttpDelete("{email}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult DeleteUser()
+        public ActionResult DeleteUser(string email)
         {
-            User user = _userRepository.GetByEmail(User.Identity.Name);
+            User user = _userRepository.GetByEmail(email);
             if (user == null) {
                 return NoContent();
             }
@@ -77,19 +79,105 @@ namespace PsyGardenBackEnd.Controllers
             }
         }
 
-        /////<summary>
-        ///// Add event to interested
-        /////</summary>
-        /////<param name="email">The email of the user</param>
-        /////<param name="eventId">The id of the event to be added to interested</param>
-        //[HttpPost("{email}/interested")]
-        //public IActionResult PostEventToInterested(string email, int eventId)
-        //{
-        //    try {
-        //        Event eventToAdd = _eventRepository.GetById(eventId);
+        ///<summary>
+        /// Add event to interested
+        ///</summary>
+        ///<param name="email">The email of the user</param>
+        ///<param name="eventId">The id of the event to be added to interested</param>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("interested/{email}")]
+        public IActionResult PostEventToInterested(string email, int eventId)
+        {
+            try {
+                Event eventToAddToInterested = _eventRepository.GetById(eventId);
+                User user = _userRepository.GetByEmail(email);
+                if (eventToAddToInterested == null || user == null) {
+                    return NotFound();
+                }
+                else {
+                    user.AddInterested(eventToAddToInterested);
+                    _userRepository.SaveChanges();
+                    return Ok();
+                }
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //    }
-        //}
+        ///<summary>
+        /// Add event to going
+        ///</summary>
+        ///<param name="email">The email of the user</param>
+        ///<param name="eventId">The id of the event to be added to going</param>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("going/{email}")]
+        public IActionResult PostEventToGoing(string email, int eventId)
+        {
+            try {
+                Event eventToAddToGoing = _eventRepository.GetById(eventId);
+                User user = _userRepository.GetByEmail(email);
+                if (eventToAddToGoing == null || user == null) {
+                    return NotFound();
+                }
+                else {
+                    user.AddGoing(eventToAddToGoing);
+                    _userRepository.SaveChanges();
+                    return Ok();
+                }
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        ///<summary>
+        /// Delete event from interested
+        ///</summary>
+        ///<param name="email">The email of the user</param>
+        ///<param name="eventId">The id of the event to be deleted from interested</param>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [HttpDelete("interested/{email}")]
+        public IActionResult DeleteEventFromInterested(string email, int eventId)
+        {
+            Event eventToDeleteFromInterested = _eventRepository.GetById(eventId);
+            User user = _userRepository.GetByEmail(email);
+            if (eventToDeleteFromInterested == null || user == null) {
+                return NoContent();
+            }
+            else {
+                user.RemoveInterested(eventToDeleteFromInterested);
+                _userRepository.SaveChanges();
+                return Ok();
+            }
+        }
+
+        ///<summary>
+        /// Delete event from going
+        ///</summary>
+        ///<param name="email">The email of the user</param>
+        ///<param name="eventId">The id of the event to be deleted from going</param>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [HttpDelete("going/{email}")]
+        public IActionResult DeleteEventFromGoing(string email, int eventId)
+        {
+            Event eventToDeleteFromInterested = _eventRepository.GetById(eventId);
+            User user = _userRepository.GetByEmail(email);
+            if (eventToDeleteFromInterested == null || user == null) {
+                return NoContent();
+            }
+            else {
+                user.RemoveInterested(eventToDeleteFromInterested);
+                _userRepository.SaveChanges();
+                return Ok();
+            }
+        }
 
     }
 }

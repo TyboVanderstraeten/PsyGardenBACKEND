@@ -97,11 +97,40 @@
             <param name="email">The email of the user</param>
             <returns>The user</returns>
         </member>
-        <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteUser">
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteUser(System.String)">
             <summary>
             Delete the user with given email
             </summary>
+            <param name="email">The email of the user</param>
             <returns>The user</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.PostEventToInterested(System.String,System.Int32)">
+            <summary>
+             Add event to interested
+            </summary>
+            <param name="email">The email of the user</param>
+            <param name="eventId">The id of the event to be added to interested</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.PostEventToGoing(System.String,System.Int32)">
+            <summary>
+             Add event to going
+            </summary>
+            <param name="email">The email of the user</param>
+            <param name="eventId">The id of the event to be added to going</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteEventFromInterested(System.String,System.Int32)">
+            <summary>
+             Delete event from interested
+            </summary>
+            <param name="email">The email of the user</param>
+            <param name="eventId">The id of the event to be deleted from interested</param>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteEventFromGoing(System.String,System.Int32)">
+            <summary>
+             Delete event from going
+            </summary>
+            <param name="email">The email of the user</param>
+            <param name="eventId">The id of the event to be deleted from going</param>
         </member>
     </members>
 </doc>
