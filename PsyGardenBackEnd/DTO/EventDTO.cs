@@ -9,51 +9,52 @@ namespace PsyGardenBackEnd.DTO
 {
     public class EventDTO
     {
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(50, ErrorMessage = "Name contains 50 chars. max")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Description is required")]
         [DataType(DataType.Text)]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Startdate is required")]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Enddate is required")]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Country is required")]
+        [StringLength(100, ErrorMessage = "Country contains 100 chars. max")]
         public string Country { get; set; }
 
-        [StringLength(100)]
+        [StringLength(100, ErrorMessage = "Region contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string Region { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = ("City is required")]
+        [StringLength(100, ErrorMessage = "City contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string City { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = ("Street is required")]
+        [StringLength(100, ErrorMessage = "Street contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string Street { get; set; }
 
-        [StringLength(10)]
+        [StringLength(10, ErrorMessage = "Street number contains 10 chars. max")]
         [DataType(DataType.Text)]
         public string StreetNr { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Zipcode is required")]
+        [StringLength(10, ErrorMessage = "Zipcode contains 10 chars. max")]
         [DataType(DataType.Text)]
         public string ZipCode { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Headerimage-URL is required")]
+        [StringLength(100, ErrorMessage = "Headerimage-URL contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string HeaderImageURL { get; set; }
 

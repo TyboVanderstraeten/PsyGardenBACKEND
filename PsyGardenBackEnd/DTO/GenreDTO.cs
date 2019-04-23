@@ -8,8 +8,8 @@ namespace PsyGardenBackEnd.DTO
 {
     public class GenreDTO
     {
-        [Required]
-        [StringLength(25)]
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(25, ErrorMessage = "Name contains 25 chars. max")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
     }
