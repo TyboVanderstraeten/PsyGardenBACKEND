@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PsyGardenBackEnd.Models.Domain
 {
@@ -9,6 +10,7 @@ namespace PsyGardenBackEnd.Models.Domain
         #region Backingfields
         private string _firstname;
         private string _lastname;
+        private string _email;
         #endregion
 
         #region Properties
@@ -19,8 +21,11 @@ namespace PsyGardenBackEnd.Models.Domain
                 return _firstname;
             }
             set {
-                if (value.Length > 50) {
-                    throw new ArgumentException("First name contains 50 char. max");
+                if (value == null || value.Equals(String.Empty)) {
+                    throw new ArgumentException("First name is required");
+                }
+                else if (value.Length > 50) {
+                    throw new ArgumentException("First name contains 50 chars. max");
                 }
                 else {
                     _firstname = value;
@@ -33,8 +38,11 @@ namespace PsyGardenBackEnd.Models.Domain
                 return _lastname;
             }
             set {
-                if (value.Length > 50) {
-                    throw new ArgumentException("Last name contains 50 char. max");
+                if (value == null || value.Equals(String.Empty)) {
+                    throw new ArgumentException("Last name is required");
+                }
+                else if (value.Length > 50) {
+                    throw new ArgumentException("Last name contains 50 chars. max");
                 }
                 else {
                     _lastname = value;
@@ -42,7 +50,18 @@ namespace PsyGardenBackEnd.Models.Domain
             }
         }
 
-        public string Email { get; set; }
+        public string Email {
+            get { return _email; }
+            set {
+                if (value == null || value.Equals(String.Empty)) {
+                    throw new ArgumentException("Email is required");
+                }
+                else {
+                    _email = value;
+                }
+            }
+        }
+
         public bool IsAdmin { get; set; }
         public ICollection<UserInterested> Interests { get; set; }
         public ICollection<UserGoing> Goings { get; set; }

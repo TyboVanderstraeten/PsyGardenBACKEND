@@ -8,7 +8,7 @@ namespace PsyGardenBackEnd.DTO
 {
     public class EventGenreDTO
     {
-        [Required]
+        [Required(ErrorMessage = "Genre-id is required")]
         public int GenreId { get; set; }
     }
 }
