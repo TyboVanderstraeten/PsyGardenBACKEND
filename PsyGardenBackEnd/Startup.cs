@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using NSwag;
 using NSwag.SwaggerGeneration.Processors.Security;
 using PsyGardenBackEnd.Data;
 using PsyGardenBackEnd.Data.Repositories;
@@ -30,6 +31,18 @@ namespace PsyGardenBackEnd
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //Add DB Context
+            services.AddDbContext<PsyGardenDBContext>(options => {
+                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
+            });
+
+            //Add repositories
+            services.AddScoped<DBInitializer>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             //Add NSwag service
             services.AddOpenApiDocument(apidoc => {
                 apidoc.DocumentName = "PsyGardenAPI";
@@ -37,10 +50,10 @@ namespace PsyGardenBackEnd
                 apidoc.Version = "v1";
                 apidoc.Description = "The PsyGarden API documentation";
                 apidoc.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token",
-                    new NSwag.SwaggerSecurityScheme {
-                        Type = NSwag.SwaggerSecuritySchemeType.ApiKey,
+                    new SwaggerSecurityScheme {
+                        Type = SwaggerSecuritySchemeType.ApiKey,
                         Name = "Authorization",
-                        In = NSwag.SwaggerSecurityApiKeyLocation.Header,
+                        In = SwaggerSecurityApiKeyLocation.Header,
                         Description = "Copy 'Bearer' + valid JWT token into field"
                     }));
                 apidoc.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Token"));
@@ -55,7 +68,8 @@ namespace PsyGardenBackEnd
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options => {
+            })
+            .AddJwtBearer(options => {
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters {
@@ -94,16 +108,6 @@ namespace PsyGardenBackEnd
                 options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());
             });
 
-            services.AddDbContext<PsyGardenDBContext>(options => {
-                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
-            });
-
-            //Add repositories
-            services.AddScoped<DBInitializer>();
-            services.AddScoped<IEventRepository, EventRepository>();
-            services.AddScoped<IGenreRepository, GenreRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,6 +121,10 @@ namespace PsyGardenBackEnd
             }
 
             app.UseHttpsRedirection();
+
+            //Use Authentication
+            app.UseAuthentication();
+
             app.UseMvc();
 
 
@@ -124,14 +132,11 @@ namespace PsyGardenBackEnd
             app.UseSwaggerUi3();
             app.UseSwagger();
 
-            //Use Authentication
-            app.UseAuthentication();
 
             //Use CORS policies
             app.UseCors("AllowAllOrigins");
 
             dbInitializer.InitializeData();
-
         }
     }
 }
