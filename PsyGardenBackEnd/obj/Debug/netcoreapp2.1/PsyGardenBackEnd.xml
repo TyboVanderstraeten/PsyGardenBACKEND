@@ -4,13 +4,13 @@
         <name>PsyGardenBackEnd</name>
     </assembly>
     <members>
-        <member name="M:PsyGardenBackEnd.Controllers.AccountController.CreateToken(PsyGardenBackEnd.DTO.LoginDTO)">
+        <member name="M:PsyGardenBackEnd.Controllers.AccountsController.CreateToken(PsyGardenBackEnd.DTO.LoginDTO)">
             <summary>
             Login
             </summary>
             <param name="loginDTO">The login details</param>
         </member>
-        <member name="M:PsyGardenBackEnd.Controllers.AccountController.Register(PsyGardenBackEnd.DTO.RegisterDTO)">
+        <member name="M:PsyGardenBackEnd.Controllers.AccountsController.Register(PsyGardenBackEnd.DTO.RegisterDTO)">
             <summary>
             Register
             </summary>

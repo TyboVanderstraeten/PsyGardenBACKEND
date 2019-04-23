@@ -142,18 +142,24 @@ namespace PsyGardenBackEnd.Controllers
         ///<param name="eventId">The id of the event to be deleted from interested</param>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("interested/{email}")]
         public IActionResult DeleteEventFromInterested(string email, int eventId)
         {
-            Event eventToDeleteFromInterested = _eventRepository.GetById(eventId);
-            User user = _userRepository.GetByEmail(email);
-            if (eventToDeleteFromInterested == null || user == null) {
-                return NoContent();
+            try {
+                Event eventToDeleteFromInterested = _eventRepository.GetById(eventId);
+                User user = _userRepository.GetByEmail(email);
+                if (eventToDeleteFromInterested == null || user == null) {
+                    return NoContent();
+                }
+                else {
+                    user.RemoveInterested(eventToDeleteFromInterested);
+                    _userRepository.SaveChanges();
+                    return Ok();
+                }
             }
-            else {
-                user.RemoveInterested(eventToDeleteFromInterested);
-                _userRepository.SaveChanges();
-                return Ok();
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -164,20 +170,25 @@ namespace PsyGardenBackEnd.Controllers
         ///<param name="eventId">The id of the event to be deleted from going</param>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("going/{email}")]
         public IActionResult DeleteEventFromGoing(string email, int eventId)
         {
-            Event eventToDeleteFromInterested = _eventRepository.GetById(eventId);
-            User user = _userRepository.GetByEmail(email);
-            if (eventToDeleteFromInterested == null || user == null) {
-                return NoContent();
+            try {
+                Event eventToDeleteFromInterested = _eventRepository.GetById(eventId);
+                User user = _userRepository.GetByEmail(email);
+                if (eventToDeleteFromInterested == null || user == null) {
+                    return NoContent();
+                }
+                else {
+                    user.RemoveGoing(eventToDeleteFromInterested);
+                    _userRepository.SaveChanges();
+                    return Ok();
+                }
             }
-            else {
-                user.RemoveInterested(eventToDeleteFromInterested);
-                _userRepository.SaveChanges();
-                return Ok();
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
             }
         }
-
     }
 }

@@ -95,8 +95,8 @@ namespace PsyGardenBackEnd
             });
 
             services.AddDbContext<PsyGardenDBContext>(options => {
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
-                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
+                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
             });
 
             //Add repositories

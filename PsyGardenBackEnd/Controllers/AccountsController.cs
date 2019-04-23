@@ -16,14 +16,14 @@ namespace PsyGardenBackEnd.Controllers
 {
     [Route("PsyGardenAPI/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountsController : ControllerBase
     {
         private SignInManager<IdentityUser> _signInManager;
         private UserManager<IdentityUser> _userManager;
         private IUserRepository _userRepository;
         private IConfiguration _configuration;
 
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager,
+        public AccountsController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager,
             IUserRepository userRepository, IConfiguration configuration)
         {
             _signInManager = signInManager;
