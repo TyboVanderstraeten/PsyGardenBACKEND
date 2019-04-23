@@ -34,12 +34,12 @@ namespace PsyGardenBackEnd.DTO
         [DataType(DataType.Text)]
         public string Region { get; set; }
 
-        [Required(ErrorMessage = ("City is required")]
+        [Required(ErrorMessage = "City is required")]
         [StringLength(100, ErrorMessage = "City contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string City { get; set; }
 
-        [Required(ErrorMessage = ("Street is required")]
+        [Required(ErrorMessage = "Street is required")]
         [StringLength(100, ErrorMessage = "Street contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string Street { get; set; }

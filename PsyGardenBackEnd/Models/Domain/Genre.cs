@@ -13,6 +13,7 @@ namespace PsyGardenBackEnd.Models.Domain
 
         #region Properties
         public int GenreId { get; set; }
+
         public string Name {
             get {
                 return _name;

@@ -104,11 +104,13 @@ namespace PsyGardenBackEnd.Models.Domain
         public string Region {
             get { return _region; }
             set {
-                if (value.Length > 100) {
-                    throw new ArgumentException("Region contains 100 chars. max");
-                }
-                else {
-                    _region = value;
+                if (value != null) {
+                    if (value.Length > 100) {
+                        throw new ArgumentException("Region contains 100 chars. max");
+                    }
+                    else {
+                        _region = value;
+                    }
                 }
             }
         }
@@ -146,11 +148,13 @@ namespace PsyGardenBackEnd.Models.Domain
         public string StreetNr {
             get { return _streetNr; }
             set {
-                if (value.Length > 10) {
-                    throw new ArgumentException("Street number contains 10 chars. max");
-                }
-                else {
-                    _streetNr = value;
+                if (value != null) {
+                    if (value.Length > 10) {
+                        throw new ArgumentException("Street number contains 10 chars. max");
+                    }
+                    else {
+                        _streetNr = value;
+                    }
                 }
             }
         }

@@ -11,13 +11,13 @@ namespace PsyGardenBackEnd.DTO
     {
         public int LinkId { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(50, ErrorMessage = "Name contains 50 chars. max")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "URL is required")]
+        [StringLength(100, ErrorMessage = "URL contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string Url { get; set; }
     }
