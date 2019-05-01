@@ -7,7 +7,7 @@ using System;
 
 namespace PsyGardenBackEnd.Data
 {
-    public class PsyGardenDBContext : DbContext
+    public class PsyGardenDBContext : IdentityDbContext
     {
         public PsyGardenDBContext(DbContextOptions<PsyGardenDBContext> options) : base(options)
         {
