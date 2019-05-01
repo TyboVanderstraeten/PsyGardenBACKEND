@@ -66,7 +66,9 @@ namespace PsyGardenBackEnd.Controllers
             IdentityUser identityUser = new IdentityUser() { UserName = registerDTO.Email, Email = registerDTO.Email };
             User user = new User() { FirstName = registerDTO.FirstName, LastName = registerDTO.LastName, Email = registerDTO.Email };
             var result = await _userManager.CreateAsync(identityUser, registerDTO.Password);
-
+            if (result.Succeeded) {
+                result = await _userManager.AddClaimAsync(identityUser, new Claim(ClaimTypes.Role, "user"));
+            }
             if (result.Succeeded) {
                 _userRepository.Add(user);
                 _userRepository.SaveChanges();

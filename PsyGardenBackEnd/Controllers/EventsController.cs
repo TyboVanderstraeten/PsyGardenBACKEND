@@ -50,6 +50,7 @@ namespace PsyGardenBackEnd.Controllers
         /// <param name="id">The id of the event</param>
         /// <returns>The event</returns>
         [HttpGet("{id}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(Event), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Event> GetEvent(int id)
@@ -170,6 +171,7 @@ namespace PsyGardenBackEnd.Controllers
         /// <param name="id">The id of the event</param>
         /// <returns>The event</returns>
         [HttpDelete("{id}")]
+        [Authorize(Policy = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult DeleteEvent(int id)
