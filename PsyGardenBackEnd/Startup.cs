@@ -13,6 +13,7 @@ using PsyGardenBackEnd.Data;
 using PsyGardenBackEnd.Data.Repositories;
 using PsyGardenBackEnd.Models.Domain;
 using System;
+using System.Security.Claims;
 using System.Text;
 
 namespace PsyGardenBackEnd
@@ -29,21 +30,25 @@ namespace PsyGardenBackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            #endregion
 
-            //Add DB Context
+            #region DBContext
             services.AddDbContext<PsyGardenDBContext>(options => {
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
                 //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
             });
+            #endregion
 
-            //Add repositories
+            #region Dependency Injections
             services.AddScoped<DBInitializer>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            #endregion
 
-            //Add NSwag service
+            #region NSwag
             services.AddOpenApiDocument(apidoc => {
                 apidoc.DocumentName = "PsyGardenAPI";
                 apidoc.Title = "PsyGarden API";
@@ -58,13 +63,15 @@ namespace PsyGardenBackEnd
                     }));
                 apidoc.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Token"));
             });
+            #endregion
 
-            //Add Default Identity
+            #region Default Identity
             services.AddIdentity<IdentityUser, IdentityRole>(options => {
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<PsyGardenDBContext>();
+            #endregion
 
-            //Add Authentication
+            #region Authentication
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -75,14 +82,22 @@ namespace PsyGardenBackEnd
                 options.TokenValidationParameters = new TokenValidationParameters {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
+                   Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     RequireExpirationTime = true
                 };
             });
+            #endregion
 
-            //Configure Identity
+            #region Authorization
+            services.AddAuthorization(options => {
+                options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "admin"));
+                options.AddPolicy("User", policy => policy.RequireClaim(ClaimTypes.Role, "user"));
+            });
+            #endregion
+
+            #region Identity
             services.Configure<IdentityOptions>(options => {
                 //Password
                 options.Password.RequireDigit = true;
@@ -103,10 +118,13 @@ namespace PsyGardenBackEnd
                 options.User.RequireUniqueEmail = true;
             });
 
-            //Add CORS service
+            #endregion
+
+            #region CORS
             services.AddCors(options => {
                 options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());
             });
+            #endregion
 
         }
 
@@ -121,22 +139,13 @@ namespace PsyGardenBackEnd
             }
 
             app.UseHttpsRedirection();
-
-            //Use Authentication
             app.UseAuthentication();
-
             app.UseMvc();
-
-
-            //Use NSwag service
             app.UseSwaggerUi3();
             app.UseSwagger();
-
-
-            //Use CORS policies
             app.UseCors("AllowAllOrigins");
 
-            dbInitializer.InitializeData();
+            dbInitializer.InitializeData().Wait();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using PsyGardenBackEnd.Models.Domain;
+﻿using Microsoft.AspNetCore.Identity;
+using PsyGardenBackEnd.Models.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PsyGardenBackEnd.Data
@@ -9,14 +9,15 @@ namespace PsyGardenBackEnd.Data
     public class DBInitializer
     {
         private PsyGardenDBContext _dbContext;
+        private UserManager<IdentityUser> _userManager;
 
-
-        public DBInitializer(PsyGardenDBContext dbContext)
+        public DBInitializer(PsyGardenDBContext dbContext, UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
         }
 
-        public void InitializeData()
+        public async Task InitializeData()
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated()) {
@@ -176,10 +177,26 @@ namespace PsyGardenBackEnd.Data
 
                 _dbContext.Users.Add(admin);
                 _dbContext.Users.Add(normalUser);
+
+                await CreateIdentityUser(admin);
+                await CreateIdentityUser(normalUser);
                 #endregion
 
                 _dbContext.SaveChanges();
             }
+        }
+
+        private async Task CreateIdentityUser(User user)
+        {
+            IdentityUser identityUser = new IdentityUser() { UserName = user.Email, Email = user.Email };
+            await _userManager.CreateAsync(identityUser, "P@ssword1");
+            if (user.IsAdmin) {
+                await _userManager.AddClaimAsync(identityUser, new Claim(ClaimTypes.Role, "admin"));
+            }
+            else {
+                await _userManager.AddClaimAsync(identityUser, new Claim(ClaimTypes.Role, "user"));
+            }
+            _dbContext.SaveChanges();
         }
     }
 }
