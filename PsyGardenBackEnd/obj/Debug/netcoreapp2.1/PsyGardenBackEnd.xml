@@ -16,6 +16,13 @@
             </summary>
             <param name="registerDTO">The register details</param>
         </member>
+        <member name="M:PsyGardenBackEnd.Controllers.AccountsController.CheckAvailableEmail(System.String)">
+            <summary>
+            Check email availability
+            </summary>
+            <param name="email">The email of the user</param>
+            <returns>A boolean (true = available / false = unavailable)</returns>
+        </member>
         <member name="M:PsyGardenBackEnd.Controllers.EventsController.GetEvents">
             <summary>
             Get all events

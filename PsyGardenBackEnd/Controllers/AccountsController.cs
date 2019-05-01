@@ -78,6 +78,19 @@ namespace PsyGardenBackEnd.Controllers
             return BadRequest();
         }
 
+        /// <summary>
+        /// Check email availability
+        /// </summary>
+        /// <param name="email">The email of the user</param>
+        /// <returns>A boolean (true = available / false = unavailable)</returns>
+        [AllowAnonymous]
+        [HttpGet("checkemail")]
+        public async Task<ActionResult<Boolean>> CheckAvailableEmail(string email)
+        {
+            var user = await _userManager.FindByNameAsync(email);
+            return user == null;
+        }
+
         private String GetToken(IdentityUser user)
         {
             var claims = new[] {
