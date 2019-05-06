@@ -49,6 +49,7 @@
             </summary>
             <param name="id">The id of the event</param>
             <param name="event">The event to be edited</param>
+            <returns>The event</returns>
         </member>
         <member name="M:PsyGardenBackEnd.Controllers.EventsController.DeleteEvent(System.Int32)">
             <summary>
@@ -117,7 +118,8 @@
              Add event to interested
             </summary>
             <param name="email">The email of the user</param>
-            <param name="eventId">The id of the event to be added to interested</param>
+            <param name="eventId">The id of the event to be added to interested</param>        
+             <returns>The user</returns>
         </member>
         <member name="M:PsyGardenBackEnd.Controllers.UsersController.PostEventToGoing(System.String,System.Int32)">
             <summary>
@@ -125,6 +127,7 @@
             </summary>
             <param name="email">The email of the user</param>
             <param name="eventId">The id of the event to be added to going</param>
+             <returns>The user</returns>
         </member>
         <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteEventFromInterested(System.String,System.Int32)">
             <summary>
@@ -132,6 +135,7 @@
             </summary>
             <param name="email">The email of the user</param>
             <param name="eventId">The id of the event to be deleted from interested</param>
+             <returns>The user</returns>
         </member>
         <member name="M:PsyGardenBackEnd.Controllers.UsersController.DeleteEventFromGoing(System.String,System.Int32)">
             <summary>
@@ -139,6 +143,7 @@
             </summary>
             <param name="email">The email of the user</param>
             <param name="eventId">The id of the event to be deleted from going</param>
+             <returns>The user</returns>
         </member>
     </members>
 </doc>

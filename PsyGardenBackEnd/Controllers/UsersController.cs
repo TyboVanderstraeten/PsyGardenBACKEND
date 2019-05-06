@@ -86,7 +86,8 @@ namespace PsyGardenBackEnd.Controllers
         /// Add event to interested
         ///</summary>
         ///<param name="email">The email of the user</param>
-        ///<param name="eventId">The id of the event to be added to interested</param>
+        ///<param name="eventId">The id of the event to be added to interested</param>        
+        /// <returns>The user</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -102,7 +103,7 @@ namespace PsyGardenBackEnd.Controllers
                 else {
                     user.AddInterested(eventToAddToInterested);
                     _userRepository.SaveChanges();
-                    return Ok();
+                    return Ok(user);
                 }
             }
             catch (Exception ex) {
@@ -115,6 +116,7 @@ namespace PsyGardenBackEnd.Controllers
         ///</summary>
         ///<param name="email">The email of the user</param>
         ///<param name="eventId">The id of the event to be added to going</param>
+        /// <returns>The user</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -130,7 +132,7 @@ namespace PsyGardenBackEnd.Controllers
                 else {
                     user.AddGoing(eventToAddToGoing);
                     _userRepository.SaveChanges();
-                    return Ok();
+                    return Ok(user);
                 }
             }
             catch (Exception ex) {
@@ -143,6 +145,7 @@ namespace PsyGardenBackEnd.Controllers
         ///</summary>
         ///<param name="email">The email of the user</param>
         ///<param name="eventId">The id of the event to be deleted from interested</param>
+        /// <returns>The user</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -158,7 +161,7 @@ namespace PsyGardenBackEnd.Controllers
                 else {
                     user.RemoveInterested(eventToDeleteFromInterested);
                     _userRepository.SaveChanges();
-                    return Ok();
+                    return Ok(user);
                 }
             }
             catch (Exception ex) {
@@ -171,6 +174,7 @@ namespace PsyGardenBackEnd.Controllers
         ///</summary>
         ///<param name="email">The email of the user</param>
         ///<param name="eventId">The id of the event to be deleted from going</param>
+        /// <returns>The user</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -186,7 +190,7 @@ namespace PsyGardenBackEnd.Controllers
                 else {
                     user.RemoveGoing(eventToDeleteFromInterested);
                     _userRepository.SaveChanges();
-                    return Ok();
+                    return Ok(user);
                 }
             }
             catch (Exception ex) {
