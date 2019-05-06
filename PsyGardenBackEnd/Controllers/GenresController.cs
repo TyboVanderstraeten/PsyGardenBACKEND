@@ -86,6 +86,7 @@ namespace PsyGardenBackEnd.Controllers
         /// </summary>
         /// <param name="id">The id of the genre</param>
         /// <param name="genre">The genre to be edited</param>
+        /// <returns>The genre</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -99,7 +100,7 @@ namespace PsyGardenBackEnd.Controllers
                 genreToEdit.Name = genreDTO.Name;
                 _genreRepository.Update(genreToEdit);
                 _genreRepository.SaveChanges();
-                return Ok();
+                return Ok(genreToEdit);
             }
         }
 

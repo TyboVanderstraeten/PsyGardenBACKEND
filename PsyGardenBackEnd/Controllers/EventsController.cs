@@ -116,6 +116,7 @@ namespace PsyGardenBackEnd.Controllers
         /// </summary>
         /// <param name="id">The id of the event</param>
         /// <param name="event">The event to be edited</param>
+        /// <returns>The event</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -161,7 +162,7 @@ namespace PsyGardenBackEnd.Controllers
 
                 _eventRepository.Update(eventToEdit);
                 _eventRepository.SaveChanges();
-                return Ok();
+                return Ok(eventToEdit);
             }
         }
 
@@ -171,7 +172,6 @@ namespace PsyGardenBackEnd.Controllers
         /// <param name="id">The id of the event</param>
         /// <returns>The event</returns>
         [HttpDelete("{id}")]
-        [Authorize(Policy = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult DeleteEvent(int id)

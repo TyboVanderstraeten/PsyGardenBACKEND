@@ -83,6 +83,7 @@
             </summary>
             <param name="id">The id of the genre</param>
             <param name="genre">The genre to be edited</param>
+            <returns>The genre</returns>
         </member>
         <member name="M:PsyGardenBackEnd.Controllers.GenresController.DeleteGenre(System.Int32)">
             <summary>
