@@ -54,7 +54,6 @@ namespace PsyGardenBackEnd.DTO
         public string ZipCode { get; set; }
 
         [Required(ErrorMessage = "Headerimage-URL is required")]
-        [StringLength(100, ErrorMessage = "Headerimage-URL contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string HeaderImageURL { get; set; }
 

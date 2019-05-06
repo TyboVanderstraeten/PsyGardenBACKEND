@@ -180,9 +180,6 @@ namespace PsyGardenBackEnd.Models.Domain
                 if (value == null || value.Equals(String.Empty)) {
                     throw new ArgumentException("Headerimage-URL is required");
                 }
-                else if (value.Length > 100) {
-                    throw new ArgumentException("Headerimage-URL contains 100 chars. max");
-                }
                 else {
                     _headerImageURL = value;
                 }
