@@ -28,6 +28,7 @@ namespace PsyGardenBackEnd.Controllers
         /// </summary>
         /// <returns>All genres</returns>
         [HttpGet]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<Genre>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<Genre>> GetGenres()
