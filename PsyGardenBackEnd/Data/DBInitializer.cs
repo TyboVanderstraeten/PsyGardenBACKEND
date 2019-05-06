@@ -123,7 +123,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event ozora = new Event("Ozora Festival", "The Ozora Festival, stylised as O.Z.O.R.A",
                     new DateTime(2019, 7, 29, 21, 0, 0),
-                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086", "https://static1.squarespace.com/static/52e562c3e4b04ab8b0fbe97d/56ef528bd210b8dcd0ac1675/56ef528b22482e26f27c3585/1458524828107/Fractalfest2015_2528.jpg?format=1500w");
+                    new DateTime(2019, 8, 4, 21, 0, 0), "Hungary", "Ozora", "Dádpuszta", "Dádpuszta", "7015", "7086", "https://i.redd.it/u4zwhkeca6j01.jpg");
                 ozora.AddEventGenre(darkPsytrance);
                 ozora.AddEventGenre(nitzhogoa);
                 ozora.AddEventGenre(fullOn);
@@ -134,7 +134,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event spaceSafari = new Event("Space Safari", "Come meet us under the sun!", new DateTime(2019, 8, 30, 14, 0, 0),
                 new DateTime(2019, 9, 2, 14, 0, 0), "Belgium", "Namen",
-                   "Massembre", "Domaine De Massembre", null, "5543", "https://static1.squarespace.com/static/52e562c3e4b04ab8b0fbe97d/56ef528bd210b8dcd0ac1675/56ef528b22482e26f27c3585/1458524828107/Fractalfest2015_2528.jpg?format=1500w");
+                   "Massembre", "Domaine De Massembre", null, "5543", "http://freebornaiden.com/wp-content/uploads/2018/06/11890403_395297293997496_6413516115231520679_o.jpg");
                 spaceSafari.AddEventGenre(psyTech);
                 spaceSafari.AddEventGenre(psytrance);
                 spaceSafari.AddEventGenre(nitzhogoa);
@@ -148,7 +148,7 @@ namespace PsyGardenBackEnd.Data
 
                 Event boom = new Event("Boom", "Connect with eachother", new DateTime(2020, 7, 28, 0, 0, 0),
                 new DateTime(2020, 8, 4, 0, 0, 0), "Portugal", "Castelo Branco",
-                   "Idanha-a-Nova", "Boomland Alcafozes", null, "6060-011", "https://static1.squarespace.com/static/52e562c3e4b04ab8b0fbe97d/56ef528bd210b8dcd0ac1675/56ef528b22482e26f27c3585/1458524828107/Fractalfest2015_2528.jpg?format=1500w");
+                   "Idanha-a-Nova", "Boomland Alcafozes", null, "6060-011", "https://europebookings.com/wp-content/uploads/boom-festival-magic-lights-main-stage.jpg");
                 boom.AddEventGenre(zenonseque);
                 boom.AddEventGenre(nitzhogoa);
                 boom.AddEventGenre(goa);
