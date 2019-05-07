@@ -23,6 +23,14 @@
             <param name="email">The email of the user</param>
             <returns>A boolean (true = available / false = unavailable)</returns>
         </member>
+        <member name="M:PsyGardenBackEnd.Controllers.CoordinatesController.GetCoordinates(System.String,System.String)">
+            <summary>
+             Get coordinates
+             </summary>
+             <param name="address">The address in correct string format</param>
+             <param name="googleApiKey">The google API key</param>
+             <returns>The latitute and longitude values</returns>
+        </member>
         <member name="M:PsyGardenBackEnd.Controllers.EventsController.GetEvents">
             <summary>
             Get all events
