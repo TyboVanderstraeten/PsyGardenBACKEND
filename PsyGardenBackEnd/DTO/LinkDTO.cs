@@ -17,7 +17,6 @@ namespace PsyGardenBackEnd.DTO
         public string Name { get; set; }
 
         [Required(ErrorMessage = "URL is required")]
-        [StringLength(100, ErrorMessage = "URL contains 100 chars. max")]
         [DataType(DataType.Text)]
         public string Url { get; set; }
     }

@@ -16,7 +16,7 @@ namespace PsyGardenBackEnd.Data.Mapping
             builder.ToTable("Link");
             builder.HasKey(r => r.LinkId);
             builder.Property(r => r.Name).IsRequired().HasMaxLength(50);
-            builder.Property(r => r.Url).IsRequired().HasMaxLength(100);
+            builder.Property(r => r.Url).IsRequired();
         }
     }
 }

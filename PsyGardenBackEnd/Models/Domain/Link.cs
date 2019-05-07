@@ -36,9 +36,6 @@ namespace PsyGardenBackEnd.Models.Domain
                 if (value == null || value.Equals(String.Empty)) {
                     throw new ArgumentException("URL is required");
                 }
-                else if (value.Length > 100) {
-                    throw new ArgumentException("URL contains 100 chars. max");
-                }
                 else {
                     _url = value;
                 }
