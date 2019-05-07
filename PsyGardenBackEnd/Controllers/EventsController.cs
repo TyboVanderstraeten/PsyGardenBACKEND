@@ -186,5 +186,98 @@ namespace PsyGardenBackEnd.Controllers
                 return Ok(@event);
             }
         }
+
+        #region Genres
+        ///<summary>
+        /// Adds a genre to the event with given id
+        /// </summary> 
+        /// <param name="id">The id of the event</param>
+        /// <param name="genre">The genre to be added</param>
+        /// <returns>The event</returns>
+        [HttpPost("{id}/genre")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Event> PostPrice(int id, EventGenreDTO eventGenreDTO)
+        {
+            try {
+                Event @event = _eventRepository.GetById(id);
+                if (@event == null) {
+                    return NotFound();
+                }
+                else {
+                    Genre genreToAdd = _genreRepository.GetById(eventGenreDTO.GenreId);
+                    @event.AddEventGenre(genreToAdd);
+                    _eventRepository.SaveChanges();
+                    return CreatedAtAction(nameof(GetEvent), new { id = @event.EventId }, @event);
+                }
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Prices
+        ///<summary>
+        /// Adds a price to the event with given id
+        /// </summary> 
+        /// <param name="id">The id of the event</param>
+        /// <param name="price">The price to be added</param>
+        /// <returns>The event</returns>
+        [HttpPost("{id}/price")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Event> PostPrice(int id, PriceDTO priceDTO)
+        {
+            try {
+                Event @event = _eventRepository.GetById(id);
+                if (@event == null) {
+                    return NotFound();
+                }
+                else {
+                    Price priceToAdd = new Price(priceDTO.Name, priceDTO.Description, priceDTO.Cost);
+                    @event.AddPrice(priceToAdd);
+                    _eventRepository.SaveChanges();
+                    return CreatedAtAction(nameof(GetEvent), new { id = @event.EventId }, @event);
+                }
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Links
+        ///<summary>
+        /// Adds a link to the event with given id
+        /// </summary> 
+        /// <param name="id">The id of the event</param>
+        /// <param name="link">The link to be added</param>
+        /// <returns>The event</returns>
+        [HttpPost("{id}/link")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Event> PostLink(int id, LinkDTO linkDTO)
+        {
+            try {
+                Event @event = _eventRepository.GetById(id);
+                if (@event == null) {
+                    return NotFound();
+                }
+                else {
+                    Link linkToAdd = new Link(linkDTO.Name, linkDTO.Url);
+                    @event.AddLink(linkToAdd);
+                    _eventRepository.SaveChanges();
+                    return CreatedAtAction(nameof(GetEvent), new { id = @event.EventId }, @event);
+                }
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
+        #endregion
     }
 }

@@ -58,6 +58,30 @@
             <param name="id">The id of the event</param>
             <returns>The event</returns>
         </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PostPrice(System.Int32,PsyGardenBackEnd.DTO.EventGenreDTO)">
+            <summary>
+             Adds a genre to the event with given id
+             </summary> 
+             <param name="id">The id of the event</param>
+             <param name="genre">The genre to be added</param>
+             <returns>The event</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PostPrice(System.Int32,PsyGardenBackEnd.DTO.PriceDTO)">
+            <summary>
+             Adds a price to the event with given id
+             </summary> 
+             <param name="id">The id of the event</param>
+             <param name="price">The price to be added</param>
+             <returns>The event</returns>
+        </member>
+        <member name="M:PsyGardenBackEnd.Controllers.EventsController.PostLink(System.Int32,PsyGardenBackEnd.DTO.LinkDTO)">
+            <summary>
+             Adds a link to the event with given id
+             </summary> 
+             <param name="id">The id of the event</param>
+             <param name="link">The link to be added</param>
+             <returns>The event</returns>
+        </member>
         <member name="M:PsyGardenBackEnd.Controllers.GenresController.GetGenres">
             <summary>
             Get all genres
