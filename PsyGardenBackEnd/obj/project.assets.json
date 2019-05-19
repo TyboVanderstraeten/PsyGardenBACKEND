@@ -12607,11 +12607,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\School\\2YS2\\Web4\\PsyGarden\\PsyGardenBACKEND\\PsyGardenBackEnd\\PsyGardenBackEnd.csproj",
+      "projectUniqueName": "D:\\School\\2YS2\\Web4\\PsyGarden\\PsyGardenBACKEND\\PsyGardenBackEnd\\PsyGardenBackEnd.csproj",
       "projectName": "PsyGardenBackEnd",
-      "projectPath": "E:\\School\\2YS2\\Web4\\PsyGarden\\PsyGardenBACKEND\\PsyGardenBackEnd\\PsyGardenBackEnd.csproj",
+      "projectPath": "D:\\School\\2YS2\\Web4\\PsyGarden\\PsyGardenBACKEND\\PsyGardenBackEnd\\PsyGardenBackEnd.csproj",
       "packagesPath": "C:\\Users\\Tybo Vanderstraeten\\.nuget\\packages\\",
-      "outputPath": "E:\\School\\2YS2\\Web4\\PsyGarden\\PsyGardenBACKEND\\PsyGardenBackEnd\\obj\\",
+      "outputPath": "D:\\School\\2YS2\\Web4\\PsyGarden\\PsyGardenBACKEND\\PsyGardenBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
