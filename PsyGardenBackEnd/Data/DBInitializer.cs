@@ -210,7 +210,7 @@ namespace PsyGardenBackEnd.Data
 
                 await CreateIdentityUser(admin);
                 await CreateIdentityUser(normalUser);
-                await CreateIdentityUser(web4User);
+                await CreateWeb4IdentityUser(web4User);
                 #endregion
 
                 _dbContext.SaveChanges();
