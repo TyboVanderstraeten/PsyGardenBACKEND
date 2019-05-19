@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿xdxdusing Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -36,8 +36,8 @@ namespace PsyGardenBackEnd
 
             #region DBContext
             services.AddDbContext<PsyGardenDBContext>(options => {
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
-                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
+                //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionDesktop"]);
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionLaptop"]);
             });
             #endregion
 
