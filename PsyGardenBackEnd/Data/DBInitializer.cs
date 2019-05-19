@@ -210,7 +210,7 @@ namespace PsyGardenBackEnd.Data
 
                 await CreateIdentityUser(admin);
                 await CreateIdentityUser(normalUser);
-                await CreateWeb4IdentityUser(web4User);
+                await CreateIdentityUser(web4User);
                 #endregion
 
                 _dbContext.SaveChanges();
@@ -221,19 +221,6 @@ namespace PsyGardenBackEnd.Data
         {
             IdentityUser identityUser = new IdentityUser() { UserName = user.Email, Email = user.Email };
             await _userManager.CreateAsync(identityUser, "P@ssword1");
-            if (user.IsAdmin) {
-                await _userManager.AddClaimAsync(identityUser, new Claim(ClaimTypes.Role, "admin"));
-            }
-            else {
-                await _userManager.AddClaimAsync(identityUser, new Claim(ClaimTypes.Role, "user"));
-            }
-            _dbContext.SaveChanges();
-        }
-
-        private async Task CreateWeb4IdentityUser(User user)
-        {
-            IdentityUser identityUser = new IdentityUser() { UserName = user.Email, Email = user.Email };
-            await _userManager.CreateAsync(identityUser, "Gelukkiggeennetbeans123");
             if (user.IsAdmin) {
                 await _userManager.AddClaimAsync(identityUser, new Claim(ClaimTypes.Role, "admin"));
             }
